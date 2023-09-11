@@ -1,5 +1,5 @@
 <template>
-  <div class="my-5">
+  <div class="form-content">
     <h2>Get started on {{ BRANDNAME }}</h2>
     <v-form class="py-4">
       <v-row>
@@ -54,7 +54,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { BRANDNAME, EMAILREGEX, FORMRULES } from "@/constants/constants";
+import { BRANDNAME, EMAILREGEX, FORMRULES,SIGNUPPAYLOAD } from "@/constants/constants";
 import FormInput from "../../Misc/Forms/FormInput.vue";
 import CountrySelector from "@/components/Misc/Countries/CountrySelector.vue";
 import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
@@ -71,13 +71,7 @@ export default Vue.extend({
       BRANDNAME: BRANDNAME,
       rules: FORMRULES,
       disabled: true,
-      payload: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        country: "Nigeria",
-        password: "",
-      },
+      payload: SIGNUPPAYLOAD
     };
   },
   methods: {

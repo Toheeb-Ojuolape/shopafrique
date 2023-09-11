@@ -1,6 +1,7 @@
 <template>
   <v-btn
     :disabled="disabled"
+    :loading="loading"
     x-large
     class="white--text rounded-lg"
     @click="handleClick"
@@ -19,6 +20,9 @@ export default Vue.extend({
   name: "PrimaryButton",
   props: {
     disabled: {
+      type: Boolean,
+    },
+    loading: {
       type: Boolean,
     },
   },
