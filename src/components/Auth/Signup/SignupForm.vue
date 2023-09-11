@@ -39,7 +39,11 @@
       />
 
       <div class="mt-3">
-        <PrimaryButton :disabled="disabled" @handleClick="nextStep">
+        <PrimaryButton
+          :loading="loading"
+          :disabled="disabled"
+          @handleClick="nextStep"
+        >
           Create Account
         </PrimaryButton>
       </div>
@@ -54,7 +58,12 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { BRANDNAME, EMAILREGEX, FORMRULES,SIGNUPPAYLOAD } from "@/constants/constants";
+import {
+  BRANDNAME,
+  EMAILREGEX,
+  FORMRULES,
+  SIGNUPPAYLOAD,
+} from "@/constants/constants";
 import FormInput from "../../Misc/Forms/FormInput.vue";
 import CountrySelector from "@/components/Misc/Countries/CountrySelector.vue";
 import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
@@ -66,18 +75,23 @@ export default Vue.extend({
     CountrySelector,
     PrimaryButton,
   },
+  props: {
+    loading: {
+      type: Boolean,
+    },
+  },
   data() {
     return {
       BRANDNAME: BRANDNAME,
       rules: FORMRULES,
       disabled: true,
-      payload: SIGNUPPAYLOAD
+      payload: SIGNUPPAYLOAD,
     };
   },
   methods: {
     handleInput(e) {
       this.payload = { ...this.payload, ...e };
-      
+
       // check if every field is defined and if the email is valid
       if (
         Object.values(this.payload).every((value) => value) &&
