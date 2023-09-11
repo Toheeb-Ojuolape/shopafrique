@@ -1,4 +1,5 @@
 export const BRANDCOLOR = "#1e90ff";
+export const SECONDARYBLUE = "#f0f5fd"
 export const BRANDNAME = "ShopAfrique";
 export const EMAILREGEX = /.+@.+\..+/;
 export const FORMRULES = {
@@ -15,6 +16,20 @@ export const SIGNUPPAYLOAD = {
   businessType: "vendor",
   businessName: "myshop",
   password: "",
+};
+
+export const LOGINPAYLOAD = {
+  email: "",
+  password: "",
+};
+
+export const EMAILPAYLOAD = {
+  email: "",
+};
+
+export const PASSWORDPAYLOAD = {
+  password: "",
+  confirmpassword:""
 };
 
 export const BUSINESSTYPES = [

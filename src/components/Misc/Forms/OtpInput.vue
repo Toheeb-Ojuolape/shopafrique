@@ -1,8 +1,6 @@
 <template>
   <div class="form-content">
-    <v-btn v-if="showBackArrow" @click="goBack" fab small depressed
-      ><v-icon>mdi-arrow-left</v-icon></v-btn
-    >
+    <BackButton v-if="showBackArrow" @goBack="goBack" />
     <h2>{{ title }}</h2>
     <div class="mb-3" v-html="description"></div>
     <v-otp-input v-model="otp" :length="length"> </v-otp-input>
@@ -23,10 +21,12 @@
   <script lang="ts">
 import Vue from "vue";
 import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
+import BackButton from "@/components/Buttons/BackButton.vue";
 export default Vue.extend({
   name: "SignupOtp",
   components: {
     PrimaryButton,
+    BackButton
   },
   props: {
     length: {
