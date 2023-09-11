@@ -31,7 +31,7 @@ import Vue from "vue";
 import AuthContainer from "@/components/Auth/AuthContainer.vue";
 import AuthCard from "@/components/Auth/AuthCard.vue";
 import ForgotPasswordForm from "@/components/Auth/ForgotPassword/ForgotPasswordForm.vue";
-import { PASSWORDPAYLOAD } from "@/constants/constants";
+import { PASSWORDPAYLOAD } from "@/constants/payload/authPayload";
 import OtpInput from "@/components/Misc/Forms/OtpInput.vue";
 import ResetPasswordForm from "@/components/Auth/ForgotPassword/ResetPasswordForm.vue";
 

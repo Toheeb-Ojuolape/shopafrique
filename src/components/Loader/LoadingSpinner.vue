@@ -1,5 +1,8 @@
 <template>
-     <div className="spinner"></div>
+    <div style="display:flex">
+     <div class="spinner"></div>
+     Loading...
+    </div>
 </template>
 
 

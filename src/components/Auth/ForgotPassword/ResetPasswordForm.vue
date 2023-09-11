@@ -33,10 +33,8 @@
     
 <script lang="ts">
 import Vue from "vue";
-import {
-  FORMRULES,
-  PASSWORDPAYLOAD,
-} from "../../../constants/constants";
+import { FORMRULES } from "../../../constants/constants";
+import { PASSWORDPAYLOAD } from "../../../constants/payload/authPayload";
 import FormInput from "../../Misc/Forms/FormInput.vue";
 import PrimaryButton from "../../../components/Buttons/PrimaryButton.vue";
 import BackButton from "../../../components/Buttons/BackButton.vue";

@@ -39,9 +39,9 @@ import Vue from "vue";
 import {
   BRANDNAME,
   EMAILREGEX,
-  FORMRULES,
-  LOGINPAYLOAD,
+  FORMRULES
 } from "@/constants/constants";
+import { LOGINPAYLOAD } from "@/constants/payload/authPayload"
 import FormInput from "../../Misc/Forms/FormInput.vue";
 import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
 
