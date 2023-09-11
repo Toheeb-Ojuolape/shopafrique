@@ -1,10 +1,22 @@
 @media only screen and (max-width:600px){
-    .auth-container{
+    .signup-container{
         height:120vh;
-        background-image: url("../src/assets/authImage.jpg");
+        background:#f4f7fa;
+        background-image: url("../src/assets/signup-image.jpg");
         background-position: center;
         object-fit: cover;
         background-size: cover;
+       
+    }
+
+    .login-container{
+        height:100vh;
+        background:#f4f7fa;
+        background-image: url("../src/assets/login-image.jpg");
+        background-position: center;
+        object-fit: cover;
+        background-size: cover;
+       
     }
     
     .auth-card{
@@ -26,13 +38,22 @@
 
 
 @media only screen and (min-width:600px){
-    .auth-container{
+    .signup-container{
         height:150vh;
-        background-image: url("../src/assets/authImage.jpg");
+        background:#f4f7fa;
+        background-image: url("../src/assets/signup-image.jpg");
         background-position: center;
         object-fit: cover;
         background-size: cover;
-       
+    }
+
+    .login-container{
+        height:100vh;
+        background:#f4f7fa;
+        background-image: url("../src/assets/login-image.jpg");
+        background-position: center;
+        object-fit: cover;
+        background-size: cover;
     }
     .auth-card{
         display:flex;

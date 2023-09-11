@@ -1,13 +1,18 @@
 <template>
-  <v-main class="auth-container">
+  <v-main :class="className">
     <slot></slot>
   </v-main>
 </template>
   
-  <script lang="ts">
+<script lang="ts">
 import Vue from "vue";
 export default Vue.extend({
   name: "AuthContainer",
+  props: {
+    className: {
+      type: String,
+    },
+  },
 });
 </script>
   

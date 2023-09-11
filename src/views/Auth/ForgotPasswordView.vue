@@ -1,10 +1,9 @@
 <template>
-  <AuthContainer>
+  <AuthContainer :className="'login-container'">
     <AuthCard>
-      <ProgressBar :percentage="percentage" />
       <v-window v-model="step">
         <v-window-item :value="1">
-          <SignupForm @nextStep="nextStep" />
+          <ForgotPasswordForm @nextStep="nextStep" />
         </v-window-item>
         <v-window-item :value="2">
           <OtpInput
@@ -18,66 +17,51 @@
           />
         </v-window-item>
         <v-window-item :value="3">
-          <BusinessType
-            :title="'Select Business Type'"
-            :description="'What type of business do you run?'"
-            @selectOption="selectOption"
-            :selected="businessType"
-          />
+          <ResetPasswordForm />
         </v-window-item>
       </v-window>
     </AuthCard>
   </AuthContainer>
 </template>
-
-
-
-<script lang="ts">
+    
+    
+    
+    <script lang="ts">
 import Vue from "vue";
 import AuthContainer from "@/components/Auth/AuthContainer.vue";
 import AuthCard from "@/components/Auth/AuthCard.vue";
-import ProgressBar from "@/components/Misc/ProgressBar.vue";
-import SignupForm from "../components/Auth/Signup/SignupForm.vue";
+import ForgotPasswordForm from "@/components/Auth/ForgotPassword/ForgotPasswordForm.vue";
+import { PASSWORDPAYLOAD } from "@/constants/constants";
 import OtpInput from "@/components/Misc/Forms/OtpInput.vue";
-import { SIGNUPPAYLOAD } from "@/constants/constants";
-import BusinessType from "@/components/Auth/Signup/BusinessType.vue";
+import ResetPasswordForm from "@/components/Auth/ForgotPassword/ResetPasswordForm.vue";
 
 export default Vue.extend({
-  name: "SignupView",
+  name: "LoginView",
   components: {
     AuthContainer,
     AuthCard,
-    ProgressBar,
-    SignupForm,
+    ForgotPasswordForm,
     OtpInput,
-    BusinessType,
+    ResetPasswordForm
   },
   data() {
     return {
-      percentage: 0,
       step: 1,
-      payload: SIGNUPPAYLOAD,
-      businessType: "",
+      payload: PASSWORDPAYLOAD,
     };
   },
   methods: {
-    goBack() {
-      this.step--;
-      this.percentage -= 33.3;
-    },
     nextStep(payload) {
+      // forgotpassword api call
       this.payload = payload;
       this.step++;
-      this.percentage += 33.3;
-      //api call here
+    },
+    goBack() {
+      this.step--;
     },
     verifyOtp() {
+      //api call to verify otp
       this.step++;
-      this.percentage += 33.3;
-      //api call here
-    },
-    selectOption(e) {
-      this.businessType = e;
     },
   },
 });

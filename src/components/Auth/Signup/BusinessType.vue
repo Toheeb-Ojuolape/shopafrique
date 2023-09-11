@@ -1,5 +1,6 @@
 <template>
   <div class="form-content">
+    <BackButton @goBack="goBack"/>
     <h2>{{ title }}</h2>
     <p>{{ description }}</p>
     <div v-for="(business, i) in BUSINESSTYPES" :key="i">
@@ -23,11 +24,13 @@
 <script lang="ts">
 import Vue from "vue";
 import { BUSINESSTYPES } from "@/constants/constants";
+import BackButton from "@/components/Buttons/BackButton.vue";
 import CheckboxCard from "@/components/Misc/Forms/CheckboxCard.vue";
 import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
 export default Vue.extend({
   name: "BusinessType",
   components: {
+    BackButton,
     CheckboxCard,
     PrimaryButton,
   },
@@ -53,6 +56,9 @@ export default Vue.extend({
       this.$emit("selectOption", e);
       this.disabled = false
     },
+    goBack(){
+      this.$emit("goBack")
+    }
   },
 });
 </script>
