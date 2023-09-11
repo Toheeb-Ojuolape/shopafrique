@@ -40,7 +40,7 @@ import AuthCard from "../..//components/Auth/AuthCard.vue";
 import ProgressBar from "../../components/Misc/ProgressBar.vue";
 import SignupForm from "../../components/Auth/Signup/SignupForm.vue";
 import OtpInput from "../../components/Misc/Forms/OtpInput.vue";
-import { SIGNUPPAYLOAD } from "../../constants/constants";
+import { SIGNUPPAYLOAD } from "../../constants/payload/authPayload";
 import BusinessType from "../../components/Auth/Signup/BusinessType.vue";
 import authService from "../../domain/Auth/authService";
 

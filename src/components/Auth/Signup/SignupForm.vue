@@ -7,7 +7,7 @@
           <FormInput
             :required="[rules.required]"
             @handleInput="handleInput"
-            :type="'name'"
+            :type="'text'"
             :label="'First Name'"
             :name="'firstName'"
           />
@@ -16,7 +16,7 @@
           <FormInput
             :required="[rules.required]"
             @handleInput="handleInput"
-            :type="'name'"
+            :type="'text'"
             :label="'Last Name'"
             :name="'lastName'"
           />
@@ -58,12 +58,8 @@
 
 <script lang="ts">
 import Vue from "vue";
-import {
-  BRANDNAME,
-  EMAILREGEX,
-  FORMRULES,
-  SIGNUPPAYLOAD,
-} from "@/constants/constants";
+import { BRANDNAME, EMAILREGEX, FORMRULES } from "@/constants/constants";
+import { SIGNUPPAYLOAD } from "@/constants/payload/authPayload";
 import FormInput from "../../Misc/Forms/FormInput.vue";
 import CountrySelector from "@/components/Misc/Countries/CountrySelector.vue";
 import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
@@ -91,8 +87,6 @@ export default Vue.extend({
   methods: {
     handleInput(e) {
       this.payload = { ...this.payload, ...e };
-
-      // check if every field is defined and if the email is valid
       if (
         Object.values(this.payload).every((value) => value) &&
         EMAILREGEX.test(this.payload.email)

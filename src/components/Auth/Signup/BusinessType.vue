@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { BUSINESSTYPES } from "@/constants/constants";
+import { BUSINESSTYPES } from "@/constants/businessTypes";
 import BackButton from "@/components/Buttons/BackButton.vue";
 import CheckboxCard from "@/components/Misc/Forms/CheckboxCard.vue";
 import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
