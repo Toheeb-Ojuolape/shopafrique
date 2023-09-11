@@ -1,0 +1,42 @@
+@media only screen and (max-width:600px){
+    .auth-container{
+        height:100vh;
+        background-image: url("../src/assets/authImage.jpg");
+        background-position: center;
+        object-fit: cover;
+        background-size: cover;
+    }
+    
+    .auth-card{
+        display:flex;
+        justify-content: flex-end;
+        padding:12px;
+        margin:60px 0px 0px 0px
+    }
+
+    .form-card{
+        padding:26px 18px 0px 18px
+    }
+}
+
+
+
+@media only screen and (min-width:600px){
+    .auth-container{
+        height:100%;
+        background-image: url("../src/assets/authImage.jpg");
+        background-position: center;
+        object-fit: cover;
+        background-size: cover;
+        overflow-y: auto;
+    }
+    .auth-card{
+        display:flex;
+        justify-content: flex-end;
+        padding:60px;
+    }
+
+    .form-card{
+        padding:36px 38px 0px 36px
+    }
+}
