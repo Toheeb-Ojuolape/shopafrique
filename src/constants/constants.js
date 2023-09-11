@@ -1,3 +1,4 @@
+export const API_URL = process.env.VUE_APP_API_URL
 export const BRANDCOLOR = "#1e90ff";
 export const SECONDARYBLUE = "#f0f5fd"
 export const BRANDNAME = "ShopAfrique";

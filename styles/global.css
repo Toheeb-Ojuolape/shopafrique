@@ -43,3 +43,8 @@ body,
 a {
   text-decoration: none;
 }
+
+
+.default-toast{
+  background-color:pink
+}

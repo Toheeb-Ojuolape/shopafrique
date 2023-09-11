@@ -4,7 +4,7 @@
       <ProgressBar :percentage="percentage" />
       <v-window v-model="step">
         <v-window-item :value="1">
-          <SignupForm @nextStep="nextStep" />
+          <SignupForm @nextStep="nextStep" :loading="loading" />
         </v-window-item>
         <v-window-item :value="2">
           <OtpInput
@@ -42,6 +42,7 @@ import SignupForm from "../../components/Auth/Signup/SignupForm.vue";
 import OtpInput from "../../components/Misc/Forms/OtpInput.vue";
 import { SIGNUPPAYLOAD } from "../../constants/constants";
 import BusinessType from "../../components/Auth/Signup/BusinessType.vue";
+import authService from "../../domain/Auth/authService";
 
 export default Vue.extend({
   name: "SignupView",
@@ -59,6 +60,8 @@ export default Vue.extend({
       step: 1,
       payload: SIGNUPPAYLOAD,
       businessType: "",
+      loading: false,
+      sessionId: "",
     };
   },
   methods: {
@@ -66,11 +69,19 @@ export default Vue.extend({
       this.step--;
       this.percentage -= 33.3;
     },
-    nextStep(payload) {
+    async nextStep(payload) {
+      this.loading = true;
       this.payload = payload;
-      this.step++;
-      this.percentage += 33.3;
-      //api call here
+      try {
+        let response = await authService.verifyEmail(payload.email);
+        console.log(response);
+        this.step++;
+        this.percentage += 33.3;
+        this.sessionId = response.data.data.sessionId;
+        console.log(this.sessionId);
+      } catch (error) {
+        this.loading = false;
+      }
     },
     verifyOtp() {
       this.step++;
