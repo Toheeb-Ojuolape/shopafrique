@@ -7,6 +7,7 @@
     @click="handleClick"
     block
     :color="BRANDCOLOR"
+    depressed
   >
     <slot></slot>
   </v-btn>

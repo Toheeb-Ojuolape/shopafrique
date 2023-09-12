@@ -13,7 +13,11 @@
       />
 
       <div class="mt-2 mb-6">
-        <PrimaryButton :disabled="disabled" @handleClick="nextStep">
+        <PrimaryButton
+          :loading="loading"
+          :disabled="disabled"
+          @handleClick="nextStep"
+        >
           Send Verification Code
         </PrimaryButton>
       </div>
@@ -36,6 +40,11 @@ export default Vue.extend({
     FormInput,
     PrimaryButton,
     BackButton,
+  },
+  props: {
+    loading: {
+      type: Boolean,
+    },
   },
   data() {
     return {

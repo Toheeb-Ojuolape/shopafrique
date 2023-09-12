@@ -1,6 +1,6 @@
 <template>
   <div class="auth-card">
-    <v-card elevation="2" width="100%" max-width="500px" class="rounded-lg form-card">
+    <v-card elevation="2" width="100%" max-width="500px" class="rounded-xl form-card">
       <slot></slot>
     </v-card>
   </div>

@@ -3,8 +3,7 @@ export const SIGNUPPAYLOAD = {
     lastName: "",
     email: "",
     country: "Nigeria",
-    businessType: "vendor",
-    businessName: "myshop",
+    businesstype: "vendor",
     password: "",
   };
   

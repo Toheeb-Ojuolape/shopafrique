@@ -6,9 +6,13 @@
       dense
       outlined
       single-line
-      :type="type"
+      :type="!show ? type : 'text'"
       v-model="input"
       :rules="required"
+      :append-icon="
+        type === 'password' ? (show ? 'mdi-eye' : 'mdi-eye-off') : ''
+      "
+      @click:append="show = !show"
     />
   </div>
 </template>
@@ -36,11 +40,12 @@ export default Vue.extend({
   data() {
     return {
       input: "",
+      show: false,
     };
   },
   watch: {
     input: function () {
-      this.$emit("handleInput", { [this.name]: this.input });
+      this.$emit("handleInput", { [this.name]: this.input.trim() });
     },
   },
 });

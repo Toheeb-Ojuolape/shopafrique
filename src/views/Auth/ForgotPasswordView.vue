@@ -3,7 +3,7 @@
     <AuthCard>
       <v-window v-model="step">
         <v-window-item :value="1">
-          <ForgotPasswordForm @nextStep="nextStep" />
+          <ForgotPasswordForm @nextStep="nextStep" :loading="loading" />
         </v-window-item>
         <v-window-item :value="2">
           <OtpInput
@@ -14,10 +14,15 @@
             :showBackArrow="true"
             @goBack="goBack"
             @verifyOtp="verifyOtp"
+            ref="otpInput"
+            :loading="loading"
           />
         </v-window-item>
         <v-window-item :value="3">
-          <ResetPasswordForm />
+          <ResetPasswordForm
+            :loading="loading"
+            @resetPassword="resetPassword"
+          />
         </v-window-item>
       </v-window>
     </AuthCard>
@@ -26,7 +31,7 @@
     
     
     
-    <script lang="ts">
+<script lang="ts">
 import Vue from "vue";
 import AuthContainer from "@/components/Auth/AuthContainer.vue";
 import AuthCard from "@/components/Auth/AuthCard.vue";
@@ -34,6 +39,7 @@ import ForgotPasswordForm from "@/components/Auth/ForgotPassword/ForgotPasswordF
 import { PASSWORDPAYLOAD } from "@/constants/payload/authPayload";
 import OtpInput from "@/components/Misc/Forms/OtpInput.vue";
 import ResetPasswordForm from "@/components/Auth/ForgotPassword/ResetPasswordForm.vue";
+import authService from "@/domain/Auth/authService";
 
 export default Vue.extend({
   name: "LoginView",
@@ -42,26 +48,59 @@ export default Vue.extend({
     AuthCard,
     ForgotPasswordForm,
     OtpInput,
-    ResetPasswordForm
+    ResetPasswordForm,
   },
   data() {
     return {
       step: 1,
       payload: PASSWORDPAYLOAD,
+      loading: false,
+      sessionId: "",
     };
   },
   methods: {
-    nextStep(payload) {
-      // forgotpassword api call
-      this.payload = payload;
-      this.step++;
-    },
     goBack() {
       this.step--;
     },
-    verifyOtp() {
-      //api call to verify otp
-      this.step++;
+
+    async nextStep(payload) {
+      this.loading = true;
+      this.payload = payload;
+      try {
+        let response = await authService.forgotPassword(payload);
+        this.step++;
+        this.sessionId = response.data.sessionId;
+        this.loading = false;
+      } catch (error) {
+        this.loading = false;
+      }
+    },
+    async verifyOtp(otp) {
+      this.loading = true;
+      try {
+        let response = await authService.verifyOtp(
+          otp,
+          this.sessionId,
+          "FORGOTPASSWORD"
+        );
+        this.processId = response.data.processId;
+        this.$refs.otpInput.clearOtp();
+        this.payload["processId"] = response.data.processId;
+        this.step++;
+        this.loading = false;
+      } catch (error) {
+        this.loading = false;
+      }
+    },
+
+    async resetPassword(payload) {
+      this.loading = true;
+      try {
+        await authService.resetPassword(payload.password, this.processId);
+        this.$router.push("/login");
+      } catch (error) {
+        this.loading = false;
+      }
     },
   },
 });

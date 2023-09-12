@@ -1,6 +1,6 @@
 <template>
   <div class="form-content">
-    <BackButton @goBack="goBack"/>
+    <BackButton @goBack="goBack" />
     <h2>{{ title }}</h2>
     <p>{{ description }}</p>
     <div v-for="(business, i) in BUSINESSTYPES" :key="i">
@@ -14,7 +14,13 @@
     </div>
 
     <div class="my-6">
-      <PrimaryButton :disabled="disabled"> Continue </PrimaryButton>
+      <PrimaryButton
+        @handleClick="signup"
+        :loading="loading"
+        :disabled="disabled"
+      >
+        Continue
+      </PrimaryButton>
     </div>
   </div>
 </template>
@@ -44,21 +50,27 @@ export default Vue.extend({
     selected: {
       type: String,
     },
+    loading: {
+      type: Boolean,
+    },
   },
   data() {
     return {
       BUSINESSTYPES: BUSINESSTYPES,
-      disabled:true
+      disabled: true,
     };
   },
   methods: {
     selectOption(e) {
       this.$emit("selectOption", e);
-      this.disabled = false
+      this.disabled = false;
     },
-    goBack(){
-      this.$emit("goBack")
-    }
+    signup() {
+      this.$emit("signup");
+    },
+    goBack() {
+      this.$emit("goBack");
+    },
   },
 });
 </script>

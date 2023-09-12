@@ -15,6 +15,8 @@
             :showBackArrow="true"
             @goBack="goBack"
             @verifyOtp="verifyOtp"
+            :loading="loading"
+            ref="otpInput"
           />
         </v-window-item>
         <v-window-item :value="3">
@@ -24,6 +26,8 @@
             @selectOption="selectOption"
             :selected="businessType"
             @goBack="goBack"
+            :loading="loading"
+            @signup="signup"
           />
         </v-window-item>
       </v-window>
@@ -62,6 +66,7 @@ export default Vue.extend({
       businessType: "",
       loading: false,
       sessionId: "",
+      processId: "",
     };
   },
   methods: {
@@ -74,22 +79,48 @@ export default Vue.extend({
       this.payload = payload;
       try {
         let response = await authService.verifyEmail(payload.email);
-        console.log(response);
         this.step++;
         this.percentage += 33.3;
-        this.sessionId = response.data.data.sessionId;
-        console.log(this.sessionId);
+        this.sessionId = response.data.sessionId;
+        this.loading = false;
       } catch (error) {
         this.loading = false;
       }
     },
-    verifyOtp() {
-      this.step++;
-      this.percentage += 33.3;
-      //api call here
+    async verifyOtp(otp) {
+      this.loading = true;
+      try {
+        let response = await authService.verifyOtp(
+          otp,
+          this.sessionId,
+          "SIGNUP"
+        );
+        this.processId = response.data.processId;
+        this.$refs.otpInput.clearOtp();
+        this.payload["processId"] = response.data.processId;
+        this.step++;
+        this.percentage += 33.3;
+        this.loading = false;
+      } catch (error) {
+        this.loading = false;
+      }
     },
     selectOption(e) {
       this.businessType = e;
+      this.payload["businesstype"] = e;
+    },
+
+    async signup() {
+      this.loading = true;
+      console.log(this.payload);
+      try {
+        let response = await authService.signup(this.payload);
+        this.loading = false;
+        this.$store.dispatch("setUser", response);
+        this.$router.push("/dashboard");
+      } catch (error) {
+        this.loading = false;
+      }
     },
   },
 });

@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import SignupView from "../views/Auth/SignupView.vue"
 import LoginView from "../views/Auth/LoginView.vue"
 import ForgotPasswordView from "../views/Auth/ForgotPasswordView.vue"
+import DashboardView from "../views/DashboardView/DashboardView.vue"
 
 Vue.use(VueRouter)
 
@@ -27,12 +28,17 @@ const routes = [
     path:"/forgot-password",
     name:"ForgotPassword",
     component:ForgotPasswordView
+  },
+  {
+    path:"/dashboard",
+    name:"Dashboard",
+    component:DashboardView
   }
 ]
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.VUE_APP_BASE_URL,
+  base: process.env.BASE_URL,
   routes
 })
 

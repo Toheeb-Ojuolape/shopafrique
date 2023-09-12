@@ -1,6 +1,6 @@
 @media only screen and (max-width:600px){
     .signup-container{
-        height:120vh;
+        height:100vh;
         background:#f4f7fa;
         background-image: url("../src/assets/signup-image.jpg");
         background-position: center;
@@ -22,12 +22,13 @@
     .auth-card{
         display:flex;
         justify-content: flex-end;
-        padding:12px;
-        margin:60px 0px 0px 0px
+        padding:10px;
+        margin:60px 0px 0px 0px;
+        align-items: center;
     }
 
     .form-card{
-        padding:26px 18px 0px 18px
+        padding:24px 24px 0px 24px
     }
 
     .form-content{
@@ -59,6 +60,7 @@
         display:flex;
         justify-content: flex-end;
         padding:60px;
+        align-items: center;
     }
 
     .form-card{
