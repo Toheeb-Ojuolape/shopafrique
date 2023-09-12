@@ -1,4 +1,4 @@
-export const toastConfig = {
+export const TOASTCONFIG = {
     position: "top-right",
     timeout: 2500,
     closeOnClick: true,

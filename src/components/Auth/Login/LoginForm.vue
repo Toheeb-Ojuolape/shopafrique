@@ -17,11 +17,15 @@
       />
 
       <p class="text-end">
-        <router-link to="/forgot-password">Forgot Password?</router-link>
+        <router-link to="forgot-password">Forgot Password?</router-link>
       </p>
 
-      <div class="mt-3">
-        <PrimaryButton :disabled="disabled" @handleClick="nextStep">
+      <div class="mt-3 mb-3">
+        <PrimaryButton
+          :loading="loading"
+          :disabled="disabled"
+          @handleClick="nextStep"
+        >
           Login
         </PrimaryButton>
       </div>
@@ -36,12 +40,8 @@
   
   <script lang="ts">
 import Vue from "vue";
-import {
-  BRANDNAME,
-  EMAILREGEX,
-  FORMRULES
-} from "@/constants/constants";
-import { LOGINPAYLOAD } from "@/constants/payload/authPayload"
+import { BRANDNAME, EMAILREGEX, FORMRULES } from "@/constants/constants";
+import { LOGINPAYLOAD } from "@/constants/payload/authPayload";
 import FormInput from "../../Misc/Forms/FormInput.vue";
 import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
 
@@ -50,6 +50,11 @@ export default Vue.extend({
   components: {
     FormInput,
     PrimaryButton,
+  },
+  props: {
+    loading: {
+      type: Boolean,
+    },
   },
   data() {
     return {
@@ -62,7 +67,6 @@ export default Vue.extend({
   methods: {
     handleInput(e) {
       this.payload = { ...this.payload, ...e };
-
       // check if every field is defined and if the email is valid
       if (
         Object.values(this.payload).every((value) => value) &&

@@ -3,13 +3,18 @@
     <BackButton v-if="showBackArrow" @goBack="goBack" />
     <h2>{{ title }}</h2>
     <div class="mb-3" v-html="description"></div>
-    <v-otp-input v-model="otp" :length="length"> </v-otp-input>
+    <v-otp-input inputmode="numeric" ref="pin" v-model="otp" :length="length">
+    </v-otp-input>
     <div class="text-center my-3">
       Didn't receive OTP? <button class="brand-color">Resend</button>
     </div>
 
     <div class="my-6">
-      <PrimaryButton @handleClick="verifyOtp" :disabled="disabled">
+      <PrimaryButton
+        :loading="loading"
+        @handleClick="verifyOtp"
+        :disabled="disabled"
+      >
         Continue
       </PrimaryButton>
     </div>
@@ -23,12 +28,15 @@ import Vue from "vue";
 import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
 import BackButton from "@/components/Buttons/BackButton.vue";
 export default Vue.extend({
-  name: "SignupOtp",
+  name: "OtpInput",
   components: {
     PrimaryButton,
-    BackButton
+    BackButton,
   },
   props: {
+    loading: {
+      type: Boolean,
+    },
     length: {
       type: Number,
     },
@@ -61,8 +69,11 @@ export default Vue.extend({
     goBack() {
       this.$emit("goBack");
     },
+    clearOtp() {
+      this.otp = "";
+    },
     verifyOtp() {
-      this.$emit("verifyOtp");
+      this.$emit("verifyOtp", this.otp);
     },
   },
 });

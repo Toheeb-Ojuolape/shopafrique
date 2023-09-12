@@ -21,7 +21,11 @@
       />
 
       <div class="mt-2 mb-6">
-        <PrimaryButton :disabled="disabled" @handleClick="nextStep">
+        <PrimaryButton
+          :loading="loading"
+          :disabled="disabled"
+          @handleClick="resetPassword"
+        >
           Reset Password
         </PrimaryButton>
       </div>
@@ -46,6 +50,11 @@ export default Vue.extend({
     PrimaryButton,
     BackButton,
   },
+  props: {
+    loading: {
+      type: Boolean,
+    },
+  },
   data() {
     return {
       rules: FORMRULES,
@@ -66,8 +75,8 @@ export default Vue.extend({
       }
     },
 
-    nextStep() {
-      this.$emit("nextStep", this.payload);
+    resetPassword() {
+      this.$emit("resetPassword",this.payload);
     },
     goBack() {
       this.$router.go(-1);
