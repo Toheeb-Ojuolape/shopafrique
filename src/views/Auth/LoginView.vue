@@ -13,7 +13,7 @@ import Vue from "vue";
 import AuthContainer from "@/components/Auth/AuthContainer.vue";
 import AuthCard from "@/components/Auth/AuthCard.vue";
 import LoginForm from "../../components/Auth/Login/LoginForm.vue";
-import authService from "@/domain/Auth/authService";
+import authService from "@/services/Auth/authService";
 
 export default Vue.extend({
   name: "LoginView",

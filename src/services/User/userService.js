@@ -1,5 +1,4 @@
 import handleError from "@/utils/handleErrors";
-// import handleSuccess from "@/utils/handleSuccess";
 import apiClient from "../../api/apiClient";
 import { HEADERS } from "@/constants/constants";
 

@@ -5,9 +5,7 @@
     <div class="mb-3" v-html="description"></div>
     <v-otp-input inputmode="numeric" ref="pin" v-model="otp" :length="length">
     </v-otp-input>
-    <div class="text-center my-3">
-      Didn't receive OTP? <button class="brand-color">Resend</button>
-    </div>
+    <ResendOtp @resendOtp="resendOtp" />
 
     <div class="my-6">
       <PrimaryButton
@@ -27,11 +25,15 @@
 import Vue from "vue";
 import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
 import BackButton from "@/components/Buttons/BackButton.vue";
+import ResendOtp from "../ResendOtp.vue";
+import handleLoading from "@/utils/handleLoading";
+import authService from "@/services/Auth/authService";
 export default Vue.extend({
   name: "OtpInput",
   components: {
     PrimaryButton,
     BackButton,
+    ResendOtp,
   },
   props: {
     loading: {
@@ -48,6 +50,9 @@ export default Vue.extend({
     },
     showBackArrow: {
       type: Boolean,
+    },
+    sessionId: {
+      type: String,
     },
   },
   data() {
@@ -74,6 +79,15 @@ export default Vue.extend({
     },
     verifyOtp() {
       this.$emit("verifyOtp", this.otp);
+    },
+
+    async resendOtp() {
+      handleLoading();
+      try {
+        await authService.resendOtp(this.sessionId);
+      } catch (error) {
+        console.log(error)
+      }
     },
   },
 });

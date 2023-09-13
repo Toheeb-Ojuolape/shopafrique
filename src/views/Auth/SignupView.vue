@@ -17,6 +17,7 @@
             @verifyOtp="verifyOtp"
             :loading="loading"
             ref="otpInput"
+            :sessionId="sessionId"
           />
         </v-window-item>
         <v-window-item :value="3">
@@ -46,7 +47,7 @@ import SignupForm from "../../components/Auth/Signup/SignupForm.vue";
 import OtpInput from "../../components/Misc/Forms/OtpInput.vue";
 import { SIGNUPPAYLOAD } from "../../constants/payload/authPayload";
 import BusinessType from "../../components/Auth/Signup/BusinessType.vue";
-import authService from "../../domain/Auth/authService";
+import authService from "../../services/Auth/authService";
 
 export default Vue.extend({
   name: "SignupView",

@@ -1,8 +1,8 @@
 import Vue from "vue";
 import LoadingSpinner from "../components/Loader/LoadingSpinner.vue";
-export default function handleError() {
+export default function handleLoading() {
   Vue.prototype.$toast.info(LoadingSpinner, {
     icon: false,
-    timeout: 5000,
+    timeout: 10000,
   });
 }
