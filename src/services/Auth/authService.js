@@ -18,6 +18,21 @@ export default {
     }
   },
 
+  async resendOtp(sessionId) {
+    try {
+      const response = await apiClient.post("/auth/resend-otp", {
+        sessionId: sessionId,
+      });
+      if (response.data.message) {
+        handleSuccess(response.data.message);
+      }
+      return response.data;
+    } catch (error) {
+      handleError(error.response.data.message);
+      throw new Error(error.response.data.message);
+    }
+  },
+
   async verifyOtp(otp, sessionId, processType) {
     try {
       const response = await apiClient.post("/auth/verify-otp", {

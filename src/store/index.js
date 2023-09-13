@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import VueCookies from "vue-cookies";
-import userService from "@/domain/User/userService";
+import userService from "@/services/User/userService";
 import { USERDATA } from "@/constants/constants";
 
 Vue.use(Vuex);

@@ -74,9 +74,8 @@ export default Vue.extend({
         this.disabled = true;
       }
     },
-
     resetPassword() {
-      this.$emit("resetPassword",this.payload);
+      this.$emit("resetPassword", this.payload);
     },
     goBack() {
       this.$router.go(-1);

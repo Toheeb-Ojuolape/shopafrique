@@ -16,6 +16,7 @@
             @verifyOtp="verifyOtp"
             ref="otpInput"
             :loading="loading"
+            :sessionId="sessionId"
           />
         </v-window-item>
         <v-window-item :value="3">
@@ -39,7 +40,7 @@ import ForgotPasswordForm from "@/components/Auth/ForgotPassword/ForgotPasswordF
 import { PASSWORDPAYLOAD } from "@/constants/payload/authPayload";
 import OtpInput from "@/components/Misc/Forms/OtpInput.vue";
 import ResetPasswordForm from "@/components/Auth/ForgotPassword/ResetPasswordForm.vue";
-import authService from "@/domain/Auth/authService";
+import authService from "@/services/Auth/authService";
 
 export default Vue.extend({
   name: "LoginView",
