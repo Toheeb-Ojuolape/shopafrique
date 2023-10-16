@@ -12,6 +12,8 @@
         :loading="loading"
         @handleClick="verifyOtp"
         :disabled="disabled"
+        :large="true"
+        :block="true"
       >
         Continue
       </PrimaryButton>

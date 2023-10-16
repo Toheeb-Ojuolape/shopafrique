@@ -43,6 +43,8 @@
           :loading="loading"
           :disabled="disabled"
           @handleClick="nextStep"
+          :large="true"
+          :block="true"
         >
           Create Account
         </PrimaryButton>

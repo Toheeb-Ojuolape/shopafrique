@@ -13,6 +13,7 @@
         type === 'password' ? (show ? 'mdi-eye' : 'mdi-eye-off') : ''
       "
       @click:append="show = !show"
+      :placeholder="placeholder"
     />
   </div>
 </template>
@@ -33,6 +34,9 @@ export default Vue.extend({
       type: Array,
     },
     name: {
+      type: String,
+    },
+    placeholder: {
       type: String,
     },
   },

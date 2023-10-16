@@ -25,6 +25,7 @@
           :loading="loading"
           :disabled="disabled"
           @handleClick="resetPassword"
+          :block="true"
         >
           Reset Password
         </PrimaryButton>

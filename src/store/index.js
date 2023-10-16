@@ -3,14 +3,71 @@ import Vuex from "vuex";
 import VueCookies from "vue-cookies";
 import userService from "@/services/User/userService";
 import { USERDATA } from "@/constants/constants";
+import ln from "./ln";
 
 Vue.use(Vuex);
 Vue.use(VueCookies);
 
 export default new Vuex.Store({
+  modules: {
+    ln,
+  },
   state: {
     user: null,
     loading: false,
+    campaigns: [
+      {
+        title: "New Campaign",
+        status: "Active",
+        date: "02-11-2022 10:00pm",
+        budget: 3000,
+        clicks: 1200,
+        impressions: 1000,
+      },
+      {
+        title: "New Campaign",
+        status: "Active",
+        date: "02-11-2022 10:00pm",
+        budget: 3000,
+        clicks: 1200,
+        impressions: 1000,
+      },
+      {
+        title: "New Campaign",
+        status: "Active",
+        date: "02-11-2022 10:00pm",
+        budget: 3000,
+        clicks: 1200,
+        impressions: 1000,
+      },
+    ],
+
+    transactions: [
+      {
+        title: "New Campaign",
+        status: "Active",
+        date: "02-11-2022 10:00pm",
+        budget: 3000,
+        clicks: 1200,
+        impressions: 1000,
+      },
+      {
+        title: "New Campaign",
+        status: "Active",
+        date: "02-11-2022 10:00pm",
+        budget: 3000,
+        clicks: 1200,
+        impressions: 1000,
+      },
+      {
+        title: "New Campaign",
+        status: "Active",
+        date: "02-11-2022 10:00pm",
+        budget: 3000,
+        clicks: 1200,
+        impressions: 1000,
+      },
+    ],
   },
   getters: {},
   mutations: {
@@ -28,7 +85,7 @@ export default new Vuex.Store({
     },
 
     FETCH_USER(state, user) {
-      state.user = user
+      state.user = user;
     },
   },
   actions: {
@@ -50,5 +107,4 @@ export default new Vuex.Store({
       }
     },
   },
-  modules: {},
 });

@@ -1,6 +1,6 @@
 <template>
   <div class="form-content">
-    <h2>Sell at the Speed of Lightning ⚡</h2>
+    <h2>Show the world your magic ⚡</h2>
     <v-form class="py-4">
       <FormInput
         :required="[rules.email]"
@@ -25,6 +25,8 @@
           :loading="loading"
           :disabled="disabled"
           @handleClick="nextStep"
+          :block="true"
+          :large="true"
         >
           Login
         </PrimaryButton>

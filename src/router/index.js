@@ -1,45 +1,68 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import SignupView from "../views/Auth/SignupView.vue"
-import LoginView from "../views/Auth/LoginView.vue"
-import ForgotPasswordView from "../views/Auth/ForgotPasswordView.vue"
-import DashboardView from "../views/DashboardView/DashboardView.vue"
+import Vue from "vue";
+import VueRouter from "vue-router";
+import SignupView from "../views/Auth/SignupView.vue";
+import LoginView from "../views/Auth/LoginView.vue";
+import ForgotPasswordView from "../views/Auth/ForgotPasswordView.vue";
+import DashboardView from "../views/DashboardView/DashboardView.vue";
+import CreateCampaign from "../views/CampaignView/CreateCampaign";
+import CampaignView from "../views/CampaignView/CampaignView"
+import Wallet from "../views/WalletView/WalletView.vue"
+import Transactions from "../views/TransactionsView/TransactionsView.vue"
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: "/",
+    name: "login",
+    component: LoginView,
   },
   {
-    path:"/signup",
-    name:'signup',
-    component:SignupView
+    path: "/signup",
+    name: "signup",
+    component: SignupView,
   },
   {
-    path:"/login",
-    name:"login",
-    component:LoginView
+    path: "/login",
+    name: "login",
+    component: LoginView,
   },
   {
-    path:"/forgot-password",
-    name:"ForgotPassword",
-    component:ForgotPasswordView
+    path: "/forgot-password",
+    name: "ForgotPassword",
+    component: ForgotPasswordView,
   },
   {
-    path:"/dashboard",
-    name:"Dashboard",
-    component:DashboardView
-  }
-]
+    path: "/dashboard",
+    name: "Dashboard",
+    component: DashboardView,
+  },
+  {
+    path: "/campaigns",
+    name: "Campaign",
+    component: CampaignView,
+  },
+  {
+    path: "/create-campaign",
+    name: "CreateCampaign",
+    component: CreateCampaign,
+  },
+  {
+    path: "/wallet",
+    name: "Wallet",
+    component: Wallet,
+  },
+  {
+    path: "/transactions",
+    name: "Transactions",
+    component: Transactions,
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
