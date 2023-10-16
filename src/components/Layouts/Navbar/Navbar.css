@@ -1,0 +1,34 @@
+.line {
+  height: 1px;
+  border: none;
+  background: #efefef;
+}
+
+.blackBg {
+  background: #f5f5f5;
+  border-right: 2px solid #363636;
+  color: #363636;
+}
+
+.blueBg {
+  border-left: 2px solid #0284c7 !important;
+}
+
+.inactive {
+  color: #dedede;
+  font-size: 14px;
+  display: flex;
+}
+
+
+.chip {
+  font-size: 10x;
+  padding: 5px 6px;
+  background: #fadefe;
+  color: #eb7bfc !important;
+  text-transform: uppercase;
+}
+
+.item-position {
+  margin: 2px 0px 0px 7px !important;
+}

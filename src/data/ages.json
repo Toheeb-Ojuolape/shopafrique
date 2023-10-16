@@ -1,0 +1,10 @@
+[
+  { "name": "1-9 years", "value": "1-9" },
+  { "name": "10-15 years", "value": "10-15" },
+  { "name": "16-19 years", "value": "16-19" },
+  { "name": "20-24 years", "value": "20-24" },
+  { "name": "25-29 years", "value": "25-29" },
+  { "name": "30-49 years", "value": "30-49" },
+  { "name": "50-59 years", "value": "50-59" },
+  { "name": "60-65 years", "value": "60-65" }
+]

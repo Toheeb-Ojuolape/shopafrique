@@ -18,6 +18,8 @@
         @handleClick="signup"
         :loading="loading"
         :disabled="disabled"
+        :block="true"
+        :large="true"
       >
         Continue
       </PrimaryButton>

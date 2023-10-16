@@ -23,7 +23,7 @@
         <v-window-item :value="3">
           <BusinessType
             :title="'Select Business Type'"
-            :description="'What type of business do you run?'"
+            :description="'Account type'"
             @selectOption="selectOption"
             :selected="businessType"
             @goBack="goBack"

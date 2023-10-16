@@ -17,6 +17,7 @@
           :loading="loading"
           :disabled="disabled"
           @handleClick="nextStep"
+          :block="true"
         >
           Send Verification Code
         </PrimaryButton>

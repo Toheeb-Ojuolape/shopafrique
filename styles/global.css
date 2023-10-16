@@ -44,7 +44,88 @@ a {
   text-decoration: none;
 }
 
+.default-toast {
+  background-color: pink;
+}
 
-.default-toast{
-  background-color:pink
+.blueColor {
+  border: 1px solid #0582d2 !important;
+  color: #0582d2 !important;
+}
+
+.primarybtn {
+  border-radius: 8px;
+  border: 1px solid #fff;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    #2d55fb !important;
+  box-shadow: 0px 0px 0px 1.5px #2d55fb,
+    0px 1.5px 4px 0px rgba(1,  15,  73,  0.40) !important;
+  font-size: 14px;
+}
+
+.tableHeading {
+  background: #f9fafb;
+  width: 100%;
+}
+
+.tableHeading th {
+  padding: 0px 15px !important;
+}
+.tableBody tr {
+  padding: 0px !important;
+}
+
+.tableBody tr td {
+  padding: 15px 15px !important;
+  text-align: center;
+}
+.table {
+  width: 100%;
+  padding: 0px 10px 0px 0px;
+}
+
+.tableWidth {
+  overflow-x: auto;
+}
+
+.active {
+  color: #027a48 !important;
+  background: #ecfdf3 !important;
+  text-align: center !important;
+}
+
+.modal-logo {
+  border-bottom: 1px solid #cad3e5;
+  padding: 15px 15px 10px 15px;
+}
+
+.fundwallet {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+
+.how__much {
+  padding: 20px !important;
+}
+
+.fundingoptions {
+  padding: 0px 20px 20px 20px;
+}
+
+@media only screen and(max-width:600px) {
+  .how__much__input {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .how__much__input {
+    display: flex;
+    justify-content: space-between;
+  }
 }

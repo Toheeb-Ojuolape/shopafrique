@@ -2,12 +2,11 @@
   <v-btn
     :disabled="disabled"
     :loading="loading"
-    x-large
-    class="white--text rounded-lg"
+    class="white--text rounded-lg primarybtn"
     @click="handleClick"
-    block
-    :color="BRANDCOLOR"
     depressed
+    :block="block"
+    :x-large="large"
   >
     <slot></slot>
   </v-btn>
@@ -26,6 +25,12 @@ export default Vue.extend({
     loading: {
       type: Boolean,
     },
+    block:{
+      type:Boolean
+    },
+    large:{
+      type:Boolean
+    }
   },
   data() {
     return {

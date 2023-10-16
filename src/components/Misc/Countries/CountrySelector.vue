@@ -1,4 +1,3 @@
-<!-- CountrySelect.vue -->
 <template>
   <div class="country-select">
     <v-menu v-model="showmenu" offset-y :close-on-content-click="false">

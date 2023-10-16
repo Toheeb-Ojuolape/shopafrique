@@ -6,10 +6,12 @@ import store from "./store";
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 import { TOASTCONFIG } from "./constants/toastConfig";
+import Flutterwave from "flutterwave-vue-v3";
 
 Vue.config.productionTip = false;
 
 Vue.use(Toast, TOASTCONFIG);
+Vue.use(Flutterwave, { publicKey: process.env.VUE_APP_FLUTTERWAVE_KEY });
 
 new Vue({
   vuetify,
