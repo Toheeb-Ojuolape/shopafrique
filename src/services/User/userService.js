@@ -7,7 +7,7 @@ export default {
     try {
       const response = await apiClient.get("/user",{
         headers:HEADERS
-      });
+      })
       return response.data;
     } catch (error) {
       handleError(error.response.data.message);

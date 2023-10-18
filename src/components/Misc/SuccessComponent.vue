@@ -12,7 +12,7 @@
       <p>{{ description }}</p>
 
       <div class="my-3">
-        <PrimaryButton @handleClick="handleClose">Continue</PrimaryButton>
+        <PrimaryButton :large="true" @handleClick="handleClose">Continue</PrimaryButton>
       </div>
     </div>
   </div>
@@ -36,6 +36,7 @@ export default {
   },
   methods: {
     handleClose() {
+      location.reload()
       this.$emit("handleClose");
     },
   },

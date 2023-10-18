@@ -1,32 +1,34 @@
 <template>
   <div class="dashboard__cards">
     <DashboardCard
-      :title="'Wallet Balance'"
-      :icon="'mdi-wallet-outline'"
-      :amount="500000"
+      :title="'Total Clicks'"
+      :icon="'views'"
+      :amount="0"
       :buttonTitle="'View wallet'"
-      :type="'amount'"
+      :type="'number'"
     />
     <DashboardCard
-      :title="'Campaigns'"
-      :icon="'mdi-bullseye'"
-      :amount="500000"
+      :title="'Total Clicks'"
+      :icon="'clicks'"
+      :amount="0"
       :buttonTitle="'View campaigns'"
       :type="'number'"
     />
     <DashboardCard
-      :icon="'mdi-chart-arc'"
-      :amount="500000"
+      :icon="'ad-spend'"
+      :amount="0"
       :title="'Spending'"
       :buttonTitle="'View spendings'"
       :type="'amount'"
     />
     <DashboardCard
-      :icon="'mdi-chart-arc'"
-      :amount="500000"
-      :title="'Spending'"
-      :buttonTitle="'View spendings'"
+      :icon="'wallet'"
+      :amount="user.balance"
+      :title="'Wallet Balance'"
+      :buttonTitle="'View wallet'"
       :type="'amount'"
+      :usdValue="usdValue"
+      :isUsd="isUsd"
     />
   </div>
 </template>
@@ -37,5 +39,16 @@ import DashboardCard from "./DashboardCard.vue";
 export default {
   name: "DashboardCards",
   components: { DashboardCard },
+  props: {
+    user: {
+      type: Object,
+    },
+    usdValue: {
+      type: [Number, String],
+    },
+    isUsd: {
+      type: Boolean,
+    },
+  },
 };
 </script>

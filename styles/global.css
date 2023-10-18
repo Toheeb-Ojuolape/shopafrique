@@ -92,7 +92,8 @@ a {
   overflow-x: auto;
 }
 
-.active {
+.active,
+.completed {
   color: #027a48 !important;
   background: #ecfdf3 !important;
   text-align: center !important;
@@ -123,7 +124,7 @@ a {
   }
 }
 
-@media only screen and (min-width:600px) {
+@media only screen and (min-width: 600px) {
   .how__much__input {
     display: flex;
     justify-content: space-between;

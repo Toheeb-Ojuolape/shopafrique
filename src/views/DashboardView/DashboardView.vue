@@ -1,7 +1,7 @@
 <template>
   <DashboardLayout>
-    <HelloUser :user="user"/>
-    <DashboardBody />
+    <HelloUser :user="user" />
+    <DashboardBody :user="user" :usdValue="usdValue" :isUsd="isUsd" />
   </DashboardLayout>
 </template>
 
@@ -14,11 +14,22 @@ import DashboardBody from "@/components/Dashboard/DashboardBody.vue";
 import HelloUser from "@/components/Dashboard/HelloUser.vue";
 export default Vue.extend({
   name: "DashboardView",
-  components: { DashboardLayout, DashboardBody,HelloUser },
+  components: { DashboardLayout, DashboardBody, HelloUser },
   computed: {
     ...mapState({
       user: "user",
     }),
+    ...mapState("ln", {
+      usdValue: (state) => state.usdValue,
+      isUsd: (state) => state.loading,
+    }),
+  },
+  watch: {
+    user() {
+      if (this.user != null) {
+        this.$store.dispatch("ln/getUsdValue", this.user.balance);
+      }
+    },
   },
   created() {
     this.$store.dispatch("fetchUser");

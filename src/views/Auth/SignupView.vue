@@ -113,7 +113,6 @@ export default Vue.extend({
 
     async signup() {
       this.loading = true;
-      console.log(this.payload);
       try {
         let response = await authService.signup(this.payload);
         this.loading = false;

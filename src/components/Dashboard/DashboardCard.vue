@@ -1,12 +1,19 @@
 <template>
   <div>
     <div class="dashboard__card__top">
-      <v-icon>{{ icon }}</v-icon>
+      <Icon :name="icon" />
     </div>
     <div class="dashboard__title">{{ title }}</div>
-    <h2>
-      {{ formatAmount }}
-    </h2>
+    <div>
+      <h2>{{ formatAmount }}</h2>
+    <span v-if="icon === 'wallet' && isUsd" class="usdvalue"
+      ><v-progress-circular indeterminate
+    /></span>
+    <span v-if="icon === 'wallet' && !isUsd" class="usdvalue"
+      >(≈ {{ usdValue | dollarFormat }})</span
+    >
+    </div>
+    
   </div>
 </template>
 
@@ -14,7 +21,14 @@
 
 <script>
 import { BRANDCOLOR } from "@/constants/constants";
-import { amountFormatter, numberFormatter } from "@/utils/amountFormatter";
+import {
+  amountFormatter,
+  numberFormatter,
+  dollarFormat,
+} from "@/utils/amountFormatter";
+import Icon from "@/assets/icons/Icon.vue";
+import Vue from "vue";
+Vue.filter("dollarFormat", dollarFormat);
 
 export default {
   props: {
@@ -33,6 +47,15 @@ export default {
     type: {
       type: String,
     },
+    usdValue: {
+      type: Number,
+    },
+    isUsd: {
+      type: Boolean,
+    },
+  },
+  components: {
+    Icon,
   },
   data() {
     return {

@@ -2,8 +2,10 @@ import Vue from "vue";
 import Vuex from "vuex";
 import VueCookies from "vue-cookies";
 import userService from "@/services/User/userService";
-import { USERDATA } from "@/constants/constants";
+// import { USERDATA } from "@/constants/constants";
 import ln from "./ln";
+import wallet from "./wallet";
+import campaigns from "./campaigns";
 
 Vue.use(Vuex);
 Vue.use(VueCookies);
@@ -11,6 +13,8 @@ Vue.use(VueCookies);
 export default new Vuex.Store({
   modules: {
     ln,
+    wallet,
+    campaigns
   },
   state: {
     user: null,
@@ -40,34 +44,7 @@ export default new Vuex.Store({
         clicks: 1200,
         impressions: 1000,
       },
-    ],
-
-    transactions: [
-      {
-        title: "New Campaign",
-        status: "Active",
-        date: "02-11-2022 10:00pm",
-        budget: 3000,
-        clicks: 1200,
-        impressions: 1000,
-      },
-      {
-        title: "New Campaign",
-        status: "Active",
-        date: "02-11-2022 10:00pm",
-        budget: 3000,
-        clicks: 1200,
-        impressions: 1000,
-      },
-      {
-        title: "New Campaign",
-        status: "Active",
-        date: "02-11-2022 10:00pm",
-        budget: 3000,
-        clicks: 1200,
-        impressions: 1000,
-      },
-    ],
+    ]
   },
   getters: {},
   mutations: {
@@ -93,17 +70,14 @@ export default new Vuex.Store({
       commit("SET_USER", value);
     },
     fetchUser: async ({ commit }) => {
-      if (USERDATA) {
-        commit("FETCH_USER", USERDATA);
-      } else {
         commit("SET_LOADING", true);
         try {
           const response = await userService.fetchUser();
           const user = response.data;
           commit("FETCH_USER", user);
+          commit("SET_LOADING", false);
         } catch (error) {
           commit("SET_LOADING", false);
-        }
       }
     },
   },

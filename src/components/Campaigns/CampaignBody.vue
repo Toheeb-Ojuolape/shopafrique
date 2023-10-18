@@ -10,6 +10,7 @@
       :buttonTitle="'See all campaigns'"
       @handleClick="handleClick"
       :type="'campaign'"
+      :loading="isCampaigns"
     />
   </div>
 </template>
@@ -20,7 +21,6 @@ import FilterTab from "./FilterTab.vue";
 import DashboardCards from "../Dashboard/DashboardCards.vue";
 import LineChart from "../Charts/LineChart.vue";
 import TableComponent from "../Table/Table.vue";
-import { mapState } from "vuex";
 export default {
   name: "CampaignBody",
   components: {
@@ -38,19 +38,22 @@ export default {
         "Budget",
         "Clicks",
         "Impressions",
-        ""
+        "",
       ],
     };
   },
-  computed: {
-    ...mapState({
-      campaigns: "campaigns",
-    }),
+  props: {
+    isCampaigns: {
+      type: Boolean,
+    },
+    campaigns: {
+      type: Array,
+    },
   },
-  methods:{
-    handleClick(){
-      this.$router.push('/campaigns')
-    }
-  }
+  methods: {
+    handleClick() {
+      this.$router.push("/campaigns/all");
+    },
+  },
 };
 </script>

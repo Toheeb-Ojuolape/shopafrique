@@ -6,6 +6,7 @@ import ForgotPasswordView from "../views/Auth/ForgotPasswordView.vue";
 import DashboardView from "../views/DashboardView/DashboardView.vue";
 import CreateCampaign from "../views/CampaignView/CreateCampaign";
 import CampaignView from "../views/CampaignView/CampaignView"
+import AllCampaigns from "../views/CampaignView/AllCampaigns"
 import Wallet from "../views/WalletView/WalletView.vue"
 import Transactions from "../views/TransactionsView/TransactionsView.vue"
 
@@ -57,7 +58,15 @@ const routes = [
     name: "Transactions",
     component: Transactions,
   },
+
+  {
+    path: "/campaigns/all",
+    name: "Campaigns",
+    component: AllCampaigns,
+  },
 ];
+
+
 
 const router = new VueRouter({
   mode: "history",

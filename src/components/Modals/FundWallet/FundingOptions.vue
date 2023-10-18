@@ -38,7 +38,7 @@ export default {
         },
         {
           title: "Fund with Card",
-          description: "Arrives within minutes",
+          description: "Instant (Fiat converted to BTC)",
           value: "fund-card",
         },
       ],
@@ -48,7 +48,7 @@ export default {
   methods: {
     selectOption(value) {
       this.selected = value;
-      this.$emit("selectOption",value)
+      this.$emit("selectOption", value);
     },
   },
 };
