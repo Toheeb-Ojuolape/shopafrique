@@ -51,8 +51,7 @@ export default {
     },
   },
   methods: {
-    makePaymentCallback(response) {
-      console.log(response)
+    makePaymentCallback() {
       this.$emit("handleFlutterwavePayment")
     },
     closedPaymentModal() {

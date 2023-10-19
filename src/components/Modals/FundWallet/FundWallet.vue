@@ -58,7 +58,7 @@
       <v-window-item :value="3">
         <SuccessComponent
           :title="'Wallet Funded successfully'"
-          :description="`You have successfully funded your Vyouz account with NGN ${amount}`"
+          :description="`You have successfully funded your Vyouz account with NGN ${amount} (${satsValue} sats)`"
           @handleClose="handleClose"
         />
       </v-window-item>
@@ -79,6 +79,7 @@ import { amountToNumber } from "../../../utils/amountFormatter.js";
 import InvoiceComponent from "./InvoiceComponent.vue";
 import SuccessComponent from "../../Misc/SuccessComponent.vue";
 import { mapState } from "vuex";
+import handleError from "@/utils/handleErrors";
 Vue.filter("amountToNumber", amountToNumber);
 
 export default {
@@ -107,6 +108,7 @@ export default {
     ...mapState("ln", {
       invoice: (state) => state.invoice,
       loading: (state) => state.loading,
+      satsValue: (state) => state.satsValue,
     }),
   },
 
@@ -136,23 +138,38 @@ export default {
 
     async handlePayment() {
       if (this.fundingoption === "fund-card") {
-        this.$refs.flutterwave.handleClick();
+        try {
+          await this.$store.dispatch("ln/getSatsValue", {
+            amount: this.amount,
+            currency: "NGN",
+          });
+          this.$refs.flutterwave.handleClick();
+        } catch (error) {
+          handleError(error.message);
+        }
       } else {
         //generate Invoice
         try {
-          const response = await this.$store.dispatch("ln/generateInvoice", {
+          await this.$store.dispatch("ln/generateInvoice", {
             amount: this.amount,
             currency: "USD",
           });
-          console.log(response)
-          this.step++
-        } catch (error) {
           this.step++;
+        } catch (error) {
+          handleError(error.message);
         }
       }
     },
 
-    handleFlutterwavePayment() {
+    async handleFlutterwavePayment() {
+      //handlepayment
+      await this.$store.dispatch("wallet/fundWallet", {
+        type: "wallet-funding",
+        amount: this.satsValue,
+        paymentMethod: "card-funding",
+      });
+
+      await this.$store.dispatch("fetchUser")
       this.step = 3;
     },
   },

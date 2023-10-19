@@ -138,50 +138,6 @@ export default {
       },
       { title: "Wallet", icon: "mdi-wallet-outline", link: "/wallet" },
     ],
-    finances: [
-      {
-        title: "Merchant",
-        icon: "mdi-briefcase-variant-outline",
-        activeIcon: "",
-        link: "/merchant",
-        disabled: false,
-        name: "merchant-link",
-      },
-      {
-        title: "Airtime/Data",
-        icon: "mdi-link",
-        activeIcon: "",
-        link: "/airtime",
-        disabled: false,
-        name: "airtime",
-      },
-      {
-        title: "Crowdfunding",
-        icon: "mdi-circle-double",
-        // link: "/crowdfunding",
-        name: "crowdfunding",
-        disabled: true,
-        chip: true,
-      },
-      {
-        title: "Virtual Cards",
-        icon: "mdi-briefcase-variant-outline",
-        activeIcon: "",
-        // link: "/virtual-cards",
-        name: "virtual-card",
-        disabled: true,
-        chip: true,
-      },
-      {
-        title: "Marketplace",
-        icon: "mdi-briefcase-variant-outline",
-        activeIcon: "",
-        // link: "/marketplace",
-        disabled: true,
-        chip: true,
-        name: "marketplace",
-      },
-    ],
     secondItems: [
       {
         title: "Profile",
@@ -221,7 +177,10 @@ export default {
       this.open = !this.open;
     },
     logOut() {
-      this.loading = true;
+      sessionStorage.removeItem("userData")
+      this.$router.push("/login")
+
+
     },
   },
 };

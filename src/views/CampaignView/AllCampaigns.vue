@@ -1,26 +1,38 @@
 <template>
   <DashboardLayout>
-    <CampaignBody :campaigns="campaigns" :isCampaigns="isCampaigns" />
+    <TableComponent
+      :title="'Campaigns'"
+      :data="campaigns"
+      :heading="heading"
+      :buttonTitle="'See all campaigns'"
+      @handleClick="handleClick"
+      :view="'page'"
+      :loading="loading"
+      :type="'campaign'"
+    />
   </DashboardLayout>
 </template>
   
   
-  
   <script>
 import DashboardLayout from "@/components/Layouts/DashboardLayout.vue";
-import CampaignBody from "@/components/Campaigns/CampaignBody.vue";
+import TableComponent from "../../components/Table/Table.vue";
 import { mapState } from "vuex";
+import { CAMPAIGNHEADING } from '@/constants/constants';
 export default {
-  name: "CreateCampaign",
   components: {
+    TableComponent,
     DashboardLayout,
-    CampaignBody,
   },
-
+  data() {
+    return {
+      heading: CAMPAIGNHEADING
+    };
+  },
   computed: {
     ...mapState("campaigns", {
       campaigns: (state) => state.campaigns,
-      isCampaigns: (state) => state.loading,
+      loading: (state) => state.loading,
     }),
   },
 
@@ -35,7 +47,3 @@ export default {
   },
 };
 </script>
-  
-  <style>
-@import "../../components/Campaigns/Campaigns.css";
-</style>
