@@ -168,6 +168,8 @@ export default {
         amount: this.satsValue,
         paymentMethod: "card-funding",
       });
+
+      await this.$store.dispatch("fetchUser")
       this.step = 3;
     },
   },
