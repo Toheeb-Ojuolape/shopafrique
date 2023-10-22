@@ -1,36 +1,50 @@
 <template>
   <div>
-    <PageTitle :icon="'mdi-bullseye'" :title="'Create Campaign'" />
+    <div class="campaign-title">
+      <PageTitle :title="'Create Campaign'" />
+      <StepsComponent :step="step" :steps="3" />
+    </div>
     <div class="create-campaign">
-      <v-stepper v-model="step" flat alt-labels>
-        <v-stepper-header>
-          <v-stepper-step :complete="step > 1" :step="1">
-            Basic Info
-          </v-stepper-step>
+      <v-window v-model="step">
+        <v-window-item :value="1">
+          <v-expansion-panels flat v-model="stage" class="mb-6">
+            <CampaignDetails @handleInput="handleInput" />
+            <CampaignCreative
+              :active="selectedmedia"
+              @selectMedia="selectMedia"
+              @selectImage="selectImage"
+            />
+          </v-expansion-panels>
+        </v-window-item>
 
-         <v-icon>mdi-chevron-right</v-icon>
+        <v-window-item :value="2">
+          <v-expansion-panels flat v-model="stage" class="mb-6">
+            <CampaignObjective
+              @selectObjective="selectObjective"
+              :objective="objective"
+            />
+            <CampaignBuild @handleInput="handleInput" />
+          </v-expansion-panels>
+        </v-window-item>
 
-          <v-stepper-step :complete="step > 2" :step="2">
-            Demographic</v-stepper-step
-          >
+        <v-window-item :value="3">
+          <v-expansion-panels flat v-model="stage" class="mb-6">
+            <CompleteForm />
+          </v-expansion-panels>
+        </v-window-item>
+      </v-window>
 
-          <v-icon>mdi-chevron-right</v-icon>
-
-          <v-stepper-step :step="3"> Review </v-stepper-step>
-        </v-stepper-header>
-
-        <v-stepper-content class="stepper__content" :step="1">
-          <CampaignDetails @nextStep="nextStep" />
-        </v-stepper-content>
-
-        <v-stepper-content class="stepper__content" :step="2">
-          <DemographicForm @prevStep="prevStep" @nextStep="nextStep" />
-        </v-stepper-content>
-
-        <v-stepper-content :step="3">
-          <CompleteForm />
-        </v-stepper-content>
-      </v-stepper>
+      <div class="d-flex justify-space-between">
+        <v-btn @click="prevStep" :disabled="step === 1" outlined
+          >Previous</v-btn
+        >
+        <PrimaryButton
+          :loading="loading"
+          :disabled="step === 3"
+          @handleClick="nextStep"
+          >Next</PrimaryButton
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -38,28 +52,79 @@
 
 <script>
 import PageTitle from "../Misc/PageTitle.vue";
-import CampaignDetails from "./CreateCampaignForms/CampaignDetails.vue";
-import DemographicForm from "./CreateCampaignForms/DemographicForm.vue";
+import StepsComponent from "../Misc/StepsComponent.vue";
+import CampaignCreative from "./CampaignCreative.vue";
+import CampaignDetails from "./CampaignDetails.vue";
+import PrimaryButton from "../Buttons/PrimaryButton.vue";
+import CampaignObjective from "./CampaignObjective.vue";
+import CampaignBuild from "./CampaignBuild.vue";
 import CompleteForm from "./CreateCampaignForms/CompleteForm.vue";
+import { CAMPAIGNPAYLOAD } from "../../constants/payload/campaignPayload";
 export default {
   name: "CreateCampaignBody",
   components: {
     PageTitle,
+    StepsComponent,
     CampaignDetails,
-    DemographicForm,
-    CompleteForm
+    CampaignCreative,
+    PrimaryButton,
+    CampaignObjective,
+    CampaignBuild,
+    CompleteForm,
   },
   data() {
     return {
-      step: 1,
+      step: 0,
+      stage: 0,
+      selectedmedia: "image",
+      objective: "",
+      campaign: CAMPAIGNPAYLOAD,
+      loading: false,
     };
   },
   methods: {
-    nextStep() {
-      this.step++;
+    async nextStep() {
+      if (this.step == 2) {
+        let access = Object.values(this.campaign);
+        if (access.includes("")) {
+          alert("Kindly fill in all your campaign details to proceed");
+        } else {
+          this.loading = true;
+          await this.createCampaign();
+        }
+      } else {
+        this.stage = 0;
+        this.step++;
+      }
     },
     prevStep() {
       this.step--;
+    },
+    selectMedia(e) {
+      this.selectedmedia = e;
+      this.campaign = { ...this.campaign, mediaType: e };
+    },
+    selectImage(e) {
+      this.campaign = { ...this.campaign, media: e };
+      console.log(this.campaign);
+    },
+    selectObjective(e) {
+      this.objective = e;
+      this.campaign = { ...this.campaign, objective: e };
+    },
+    handleInput(e) {
+      this.campaign = { ...this.campaign, ...e };
+      console.log(this.campaign);
+    },
+
+    async createCampaign() {
+      try {
+        await this.$store.dispatch("campaigns/createCampaign", this.campaign);
+        this.loading = false;
+        this.step++;
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };

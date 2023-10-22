@@ -7,7 +7,7 @@
       :usdValue="usdValue"
       :isUsd="isUsd"
     />
-    <line-chart :title="'Ad Spend'" />
+    <line-chart :title="'Ad Spend'" :datacollection="ADSPENDDATA" />
     <TableComponent
       :title="'Recent Transactions'"
       :data="transactions.slice(0, 5)"
@@ -31,6 +31,7 @@ import TableComponent from "../Table/Table.vue";
 import FundWallet from "../Modals/FundWallet/FundWallet.vue";
 import { mapState } from "vuex";
 import { WALLETHEADING } from "@/constants/constants";
+import { ADSPENDDATA } from "@/constants/chart/chartdata";
 export default {
   name: "CampaignBody",
   components: {
@@ -63,6 +64,7 @@ export default {
     return {
       WALLETHEADING: WALLETHEADING,
       fundwallet: false,
+      ADSPENDDATA,
     };
   },
   computed: {

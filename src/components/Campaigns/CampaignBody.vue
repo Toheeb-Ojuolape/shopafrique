@@ -2,7 +2,7 @@
   <div>
     <FilterTab />
     <dashboard-cards />
-    <line-chart :title="'Ad Spend'" />
+    <line-chart :title="'Ad Spend'" :datacollection="ADSPENDDATA"/>
     <TableComponent
       :title="'Recent Campaigns'"
       :data="campaigns"
@@ -21,6 +21,7 @@ import FilterTab from "./FilterTab.vue";
 import DashboardCards from "../Dashboard/DashboardCards.vue";
 import LineChart from "../Charts/LineChart.vue";
 import TableComponent from "../Table/Table.vue";
+import { ADSPENDDATA } from "@/constants/chart/chartdata";
 export default {
   name: "CampaignBody",
   components: {
@@ -40,6 +41,7 @@ export default {
         "Impressions",
         "",
       ],
+      ADSPENDDATA
     };
   },
   props: {

@@ -23,7 +23,7 @@
     />
     <DashboardCard
       :icon="'wallet'"
-      :amount="user.balance"
+      :amount="user?user.balance:0"
       :title="'Wallet Balance'"
       :buttonTitle="'View wallet'"
       :type="'amount'"

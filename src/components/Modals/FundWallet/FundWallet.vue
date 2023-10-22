@@ -81,6 +81,7 @@ import SuccessComponent from "../../Misc/SuccessComponent.vue";
 import { mapState } from "vuex";
 import handleError from "@/utils/handleErrors";
 Vue.filter("amountToNumber", amountToNumber);
+import { io } from "socket.io-client";
 
 export default {
   name: "FundWallet",
@@ -102,6 +103,7 @@ export default {
       alert: false,
       fundingoption: "",
       disabled: true,
+      socketClient: "",
     };
   },
   computed: {
@@ -124,8 +126,28 @@ export default {
       }
     },
   },
+
+  created() {
+    const socket = io(process.env.VUE_APP_SERVICE_URL);
+    socket.on("message", (data) => {
+      console.log("Received message:", data);
+      this.socketClient = data;
+    });
+
+    socket.on("payment-verified", async () => {
+      await this.$store.dispatch("wallet/fundWallet", {
+        type: "wallet-funding",
+        amount: this.satsValue,
+        paymentMethod: "bitcoin",
+      });
+      await this.$store.dispatch("fetchUser");
+      this.step = 3;
+    });
+  },
+
   methods: {
     handleClose() {
+      this.step = 1;
       this.$emit("handleClose");
     },
     setAmount(e) {
@@ -137,27 +159,25 @@ export default {
     },
 
     async handlePayment() {
-      if (this.fundingoption === "fund-card") {
-        try {
-          await this.$store.dispatch("ln/getSatsValue", {
-            amount: this.amount,
-            currency: "NGN",
-          });
+      try {
+        await this.$store.dispatch("ln/getSatsValue", {
+          amount: this.amount,
+          currency: "NGN",
+        });
+
+        if (this.fundingoption === "fund-card") {
           this.$refs.flutterwave.handleClick();
-        } catch (error) {
-          handleError(error.message);
-        }
-      } else {
-        //generate Invoice
-        try {
+        } else {
+          //generate Invoice
           await this.$store.dispatch("ln/generateInvoice", {
             amount: this.amount,
-            currency: "USD",
+            currency: "NGN",
+            socketClient: this.socketClient,
           });
           this.step++;
-        } catch (error) {
-          handleError(error.message);
         }
+      } catch (error) {
+        handleError(error.message);
       }
     },
 
@@ -168,8 +188,7 @@ export default {
         amount: this.satsValue,
         paymentMethod: "card-funding",
       });
-
-      await this.$store.dispatch("fetchUser")
+      await this.$store.dispatch("fetchUser");
       this.step = 3;
     },
   },

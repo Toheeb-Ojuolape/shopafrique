@@ -26,6 +26,7 @@
           :disabled="disabled"
           @handleClick="resetPassword"
           :block="true"
+          :large="true"
         >
           Reset Password
         </PrimaryButton>

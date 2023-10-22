@@ -2,7 +2,6 @@
   <div class="form-content">
     <BackButton @goBack="goBack" />
     <h2>{{ title }}</h2>
-    <p>{{ description }}</p>
     <div v-for="(business, i) in BUSINESSTYPES" :key="i">
       <CheckboxCard
         :selected="selected"

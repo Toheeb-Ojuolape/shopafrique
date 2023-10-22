@@ -27,10 +27,10 @@ export default {
     async generateInvoice({ commit }, value) {
       try {
         commit("SET_LOADING", true);
-        const { invoice } = await lightningService.generateInvoice(value);
-        commit("SET_INVOICE", invoice);
+        const { paymentRequest } = await lightningService.generateInvoice(value);
+        commit("SET_INVOICE", paymentRequest);
         commit("SET_LOADING", false);
-        return invoice;
+        return paymentRequest;
       } catch (error) {
         commit("SET_LOADING", false);
       }

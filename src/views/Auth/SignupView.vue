@@ -22,7 +22,7 @@
         </v-window-item>
         <v-window-item :value="3">
           <BusinessType
-            :title="'Select Business Type'"
+            :title="'Account Type'"
             :description="'Account type'"
             @selectOption="selectOption"
             :selected="businessType"

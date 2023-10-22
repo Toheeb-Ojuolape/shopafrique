@@ -18,6 +18,7 @@
           :disabled="disabled"
           @handleClick="nextStep"
           :block="true"
+          :large="true"
         >
           Send Verification Code
         </PrimaryButton>

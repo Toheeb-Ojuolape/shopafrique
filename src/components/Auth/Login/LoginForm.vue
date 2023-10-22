@@ -1,6 +1,6 @@
 <template>
   <div class="form-content">
-    <h2>Show the world your magic ⚡</h2>
+    <h2>Stacking sats is fun! ⚡</h2>
     <v-form class="py-4">
       <FormInput
         :required="[rules.email]"

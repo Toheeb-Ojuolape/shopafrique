@@ -3,16 +3,17 @@ import apiClient from "../../api/apiClient";
 import { HEADERS } from "@/constants/constants";
 
 export default {
-  async createCampaign() {
-    // try {
-    //   const response = await apiClient.post("/wallet/fund-wallet", data, {
-    //     headers: HEADERS,
-    //   });
-    //   return response.data;
-    // } catch (error) {
-    //   handleError(error.response.data.message);
-    //   throw new Error(error.response.data.message);
-    // }
+  async createCampaign(data) {
+    console.log(data)
+    try {
+      const response = await apiClient.post("/campaigns", data, {
+        headers: HEADERS,
+      });
+      return response.data;
+    } catch (error) {
+      handleError(error.response.data.message);
+      throw new Error(error.response.data.message);
+    }
   },
 
   async fetchCampaigns() {
