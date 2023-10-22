@@ -1,4 +1,4 @@
-# shopafrique
+# Vyouz
 
 ## Project setup
 ```
