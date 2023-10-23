@@ -6,7 +6,6 @@
       <div class="auth-card">
         <v-card
           flat
-          max-width="500px"
           class="rounded-xl form-card"
         >
           <slot></slot>

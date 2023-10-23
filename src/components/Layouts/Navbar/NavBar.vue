@@ -16,7 +16,9 @@
       <v-list>
         <v-list-item-group color="white">
           <v-list-item
-            v-for="item in items"
+            v-for="item in user.businessType === 'business'
+              ? businessmenu
+              : publishermenu"
             :key="item.title"
             :to="item.link"
             link
@@ -70,33 +72,14 @@
             </v-list-item> -->
           <!-- </v-list-group> -->
 
-          <hr class="line" />
-
-          <v-list-item
-            v-for="item in secondItems"
-            :key="item.title"
-            :to="item.link"
-            link
-            @click="goToDispute(item.title)"
-            class="white--text"
-          >
-            <v-list-item-icon style="margin-right: 20px">
-              <v-icon color="white">{{ item.icon }}</v-icon>
-            </v-list-item-icon>
-
-            <v-list-item-content :to="item.link">
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-
-          <v-list-item class="white--text" @click="logOut()">
+          <!-- <v-list-item class="white--text" @click="logOut()">
             <v-list-item-icon style="margin-right: 20px">
               <v-icon color="white" :loading="loading">mdi-logout</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title>Log out</v-list-item-title>
             </v-list-item-content>
-          </v-list-item>
+          </v-list-item> -->
         </v-list-item-group>
       </v-list>
 
@@ -121,9 +104,12 @@ export default {
     isMobile: {
       type: Boolean,
     },
+    user: {
+      type: Object,
+    },
   },
   data: () => ({
-    items: [
+    businessmenu: [
       {
         title: "Dashboard",
         icon: "dashboard",
@@ -137,12 +123,33 @@ export default {
         type: "custom-icon",
       },
       { title: "Wallet", icon: "mdi-wallet-outline", link: "/wallet" },
-    ],
-    secondItems: [
       {
-        title: "Profile",
-        icon: "mdi-account-circle-outline",
+        title: "Settings",
+        icon: "settings",
         link: "/settings",
+        type: "custom-icon",
+      },
+    ],
+
+    publishermenu: [
+      {
+        title: "Dashboard",
+        icon: "dashboard",
+        link: "/dashboard",
+        type: "custom-icon",
+      },
+      {
+        title: "Sites",
+        icon: "sites",
+        link: "/sites",
+        type: "custom-icon",
+      },
+      { title: "Wallet", icon: "mdi-wallet-outline", link: "/wallet" },
+      {
+        title: "Settings",
+        icon: "settings",
+        link: "/settings",
+        type: "custom-icon",
       },
     ],
     drawer: false,
@@ -175,12 +182,6 @@ export default {
 
     showValue() {
       this.open = !this.open;
-    },
-    logOut() {
-      sessionStorage.removeItem("userData")
-      this.$router.push("/login")
-
-
     },
   },
 };

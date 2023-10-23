@@ -1,5 +1,5 @@
 <template>
-  <v-btn fab depressed color="white" @click="goToNotifications()" class="mr-2">
+  <v-btn fab depressed color="white" class="mr-2">
     <div top left>
       <template>
         <v-badge
@@ -37,9 +37,9 @@ export default {
     },
   },
   methods: {
-    goToNotifications() {
-      this.$router.push("/notifications");
-    },
+    // goToNotifications() {
+    //   this.$router.push("/notifications");
+    // },
   },
 };
 </script>

@@ -1,7 +1,6 @@
 <template>
   <AuthContainer :className="'signup-container'">
     <AuthCard>
-      <ProgressBar :percentage="percentage" />
       <v-window v-model="step">
         <v-window-item :value="1">
           <SignupForm @nextStep="nextStep" :loading="loading" />
@@ -22,8 +21,8 @@
         </v-window-item>
         <v-window-item :value="3">
           <BusinessType
-            :title="'Account Type'"
-            :description="'Account type'"
+            :title="'Account Information'"
+            :description="'We need this information to set up your account'"
             @selectOption="selectOption"
             :selected="businessType"
             @goBack="goBack"
@@ -42,7 +41,6 @@
 import Vue from "vue";
 import AuthContainer from "../../components/Auth/AuthContainer.vue";
 import AuthCard from "../..//components/Auth/AuthCard.vue";
-import ProgressBar from "../../components/Misc/ProgressBar.vue";
 import SignupForm from "../../components/Auth/Signup/SignupForm.vue";
 import OtpInput from "../../components/Misc/Forms/OtpInput.vue";
 import { SIGNUPPAYLOAD } from "../../constants/payload/authPayload";
@@ -54,7 +52,6 @@ export default Vue.extend({
   components: {
     AuthContainer,
     AuthCard,
-    ProgressBar,
     SignupForm,
     OtpInput,
     BusinessType,
@@ -117,7 +114,7 @@ export default Vue.extend({
         let response = await authService.signup(this.payload);
         this.loading = false;
         this.$store.dispatch("setUser", response);
-        this.$router.push("/dashboard");
+        window.location.href = "/dashboard"
       } catch (error) {
         this.loading = false;
       }

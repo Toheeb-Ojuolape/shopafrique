@@ -18,7 +18,7 @@
     />
 
     <v-dialog persistent v-model="fundwallet" max-width="500px">
-      <FundWallet @handleClose="handleClose" />
+      <FundWallet :user="user" @handleClose="handleClose" />
     </v-dialog>
   </div>
 </template>
