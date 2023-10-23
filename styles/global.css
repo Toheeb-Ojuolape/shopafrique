@@ -3,8 +3,8 @@
 }
 
 @font-face {
-  font-family: "PP Radio";
-  src: url("../src/assets/fonts/PPRadioGrotesk-Regular.otf");
+  font-family: "InterDisplay";
+  src: url("../src/assets/fonts/InterDisplay-Medium.otf");
 }
 
 @font-face {
@@ -29,7 +29,7 @@ p,
 div,
 body,
 .v-btn {
-  font-family: "PP Radio";
+  font-family: "InterDisplay";
 }
 
 .pointer {
@@ -55,15 +55,12 @@ a {
 
 .primarybtn {
   border-radius: 8px;
-  border: 1px solid #fff;
   background: linear-gradient(
       180deg,
       rgba(255, 255, 255, 0.16) 0%,
       rgba(255, 255, 255, 0) 100%
     ),
     #2d55fb !important;
-  box-shadow: 0px 0px 0px 1.5px #2d55fb,
-    0px 1.5px 4px 0px rgba(1,  15,  73,  0.40) !important;
   font-size: 14px;
 }
 
@@ -129,4 +126,10 @@ a {
     display: flex;
     justify-content: space-between;
   }
+}
+
+
+
+.v-tab{
+  text-transform: capitalize !important;
 }

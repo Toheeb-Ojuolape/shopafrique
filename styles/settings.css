@@ -1,0 +1,20 @@
+.settings-container{
+    max-width:600px;
+    margin:auto
+}
+
+
+.settings-container>.v-tabs{
+    margin:20px 0px !important
+}
+
+.active-tab{
+    background-color: #F3F5F9 !important;
+    color:black !important;
+    border-bottom: 1px solid #F3F5F9 !important
+}
+
+.success-chip{
+    color:#027A48 !important;
+    background:#ECFDF3 !important
+}

@@ -14,6 +14,7 @@
       "
       @click:append="show = !show"
       :placeholder="placeholder"
+      :readonly="readonly"
     />
   </div>
 </template>
@@ -39,6 +40,9 @@ export default Vue.extend({
     placeholder: {
       type: String,
     },
+    readonly:{
+      type:Boolean
+    }
   },
 
   data() {

@@ -1,6 +1,9 @@
 <template>
   <div class="form-content">
-    <h2>Stacking sats is fun! ⚡</h2>
+    <div clas="mb-4">
+      <h1>Login to your account</h1>
+      <div>Welcome back, please enter your details</div>
+    </div>
     <v-form class="py-4">
       <FormInput
         :required="[rules.email]"

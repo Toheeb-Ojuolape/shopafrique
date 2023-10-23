@@ -1,6 +1,9 @@
 <template>
   <div class="form-content">
-    <h2>Get started on {{ BRANDNAME }}</h2>
+    <div class="mb-3">
+    <h1>Get started on {{ BRANDNAME }}</h1>
+    <div>Provide your basic information to get started.</div>
+  </div>
     <v-form class="py-4">
       <v-row>
         <v-col>

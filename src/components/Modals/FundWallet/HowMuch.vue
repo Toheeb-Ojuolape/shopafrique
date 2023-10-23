@@ -8,14 +8,19 @@
           v-model="amount"
           class="input"
           inputmode="numeric"
-
         />
       </div>
       <div>
         <v-btn small depressed rounded>
           <div>
-            <span :class="`fi fi-${country.code.toLowerCase()}`"></span>
-            <span class="ml-2">{{ country.currency }}</span>
+            <span
+              :class="`fi fi-${AFRICANCOUNTRIES[
+                user.country
+              ].code.toLowerCase()}`"
+            ></span>
+            <span class="ml-2">{{
+              AFRICANCOUNTRIES[user.country].currency
+            }}</span>
           </div>
           <v-icon>mdi-chevron-down</v-icon>
         </v-btn>
@@ -26,14 +31,16 @@
 
 
 <script>
+import AFRICANCOUNTRIES from "../../../data/africancountries.json";
 export default {
+  props: {
+    user: {
+      type: Object,
+    },
+  },
   data() {
     return {
-      country: {
-        code: "NG",
-        name: "Nigeria",
-        currency: "NGN",
-      },
+      AFRICANCOUNTRIES,
       amount: "",
     };
   },
@@ -45,9 +52,8 @@ export default {
         this.amount = this.amount.replace(/\D/g, "");
       }
       this.amount = this.amount.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      this.$emit("setAmount",this.amount)
+      this.$emit("setAmount", this.amount);
     },
-    
   },
 };
 </script>

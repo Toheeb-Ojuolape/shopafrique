@@ -33,7 +33,7 @@ export default Vue.extend({
       try {
         let response = await authService.login(payload);
         this.$store.dispatch("setUser",response);
-        this.$router.push("/dashboard");
+        window.location.href = "/dashboard"
       } catch (error) {
         this.loading = false;
       }

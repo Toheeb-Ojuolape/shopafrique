@@ -1,0 +1,219 @@
+{
+    "Algeria": {
+      "code": "DZ",
+      "currency": "DZD"
+    },
+    "Angola": {
+      "code": "AO",
+      "currency": "AOA"
+    },
+    "Benin": {
+      "code": "BJ",
+      "currency": "XOF"
+    },
+    "Botswana": {
+      "code": "BW",
+      "currency": "BWP"
+    },
+    "Burkina Faso": {
+      "code": "BF",
+      "currency": "XOF"
+    },
+    "Burundi": {
+      "code": "BI",
+      "currency": "BIF"
+    },
+    "Cameroon": {
+      "code": "CM",
+      "currency": "XAF"
+    },
+    "Cape Verde": {
+      "code": "CV",
+      "currency": "CVE"
+    },
+    "Central African Republic": {
+      "code": "CF",
+      "currency": "XAF"
+    },
+    "Chad": {
+      "code": "TD",
+      "currency": "XAF"
+    },
+    "Comoros": {
+      "code": "KM",
+      "currency": "KMF"
+    },
+    "Congo (Brazzaville)": {
+      "code": "CG",
+      "currency": "XAF"
+    },
+    "Congo (Kinshasa)": {
+      "code": "CD",
+      "currency": "CDF"
+    },
+    "Djibouti": {
+      "code": "DJ",
+      "currency": "DJF"
+    },
+    "Egypt": {
+      "code": "EG",
+      "currency": "EGP"
+    },
+    "Equatorial Guinea": {
+      "code": "GQ",
+      "currency": "XAF"
+    },
+    "Eritrea": {
+      "code": "ER",
+      "currency": "ERN"
+    },
+    "Eswatini (fmr. Swaziland)": {
+      "code": "SZ",
+      "currency": "SZL"
+    },
+    "Ethiopia": {
+      "code": "ET",
+      "currency": "ETB"
+    },
+    "Gabon": {
+      "code": "GA",
+      "currency": "XAF"
+    },
+    "Gambia": {
+      "code": "GM",
+      "currency": "GMD"
+    },
+    "Ghana": {
+      "code": "GH",
+      "currency": "GHS"
+    },
+    "Guinea": {
+      "code": "GN",
+      "currency": "GNF"
+    },
+    "Guinea-Bissau": {
+      "code": "GW",
+      "currency": "XOF"
+    },
+    "Ivory Coast": {
+      "code": "CI",
+      "currency": "XOF"
+    },
+    "Kenya": {
+      "code": "KE",
+      "currency": "KES"
+    },
+    "Lesotho": {
+      "code": "LS",
+      "currency": "LSL"
+    },
+    "Liberia": {
+      "code": "LR",
+      "currency": "LRD"
+    },
+    "Libya": {
+      "code": "LY",
+      "currency": "LYD"
+    },
+    "Madagascar": {
+      "code": "MG",
+      "currency": "MGA"
+    },
+    "Malawi": {
+      "code": "MW",
+      "currency": "MWK"
+    },
+    "Mali": {
+      "code": "ML",
+      "currency": "XOF"
+    },
+    "Mauritania": {
+      "code": "MR",
+      "currency": "MRU"
+    },
+    "Mauritius": {
+      "code": "MU",
+      "currency": "MUR"
+    },
+    "Morocco": {
+      "code": "MA",
+      "currency": "MAD"
+    },
+    "Mozambique": {
+      "code": "MZ",
+      "currency": "MZN"
+    },
+    "Namibia": {
+      "code": "NA",
+      "currency": "NAD"
+    },
+    "Niger": {
+      "code": "NE",
+      "currency": "XOF"
+    },
+    "Nigeria": {
+      "code": "NG",
+      "currency": "NGN"
+    },
+    "Rwanda": {
+      "code": "RW",
+      "currency": "RWF"
+    },
+    "Sao Tome and Principe": {
+      "code": "ST",
+      "currency": "STN"
+    },
+    "Senegal": {
+      "code": "SN",
+      "currency": "XOF"
+    },
+    "Seychelles": {
+      "code": "SC",
+      "currency": "SCR"
+    },
+    "Sierra Leone": {
+      "code": "SL",
+      "currency": "SLL"
+    },
+    "Somalia": {
+      "code": "SO",
+      "currency": "SOS"
+    },
+    "South Africa": {
+      "code": "ZA",
+      "currency": "ZAR"
+    },
+    "South Sudan": {
+      "code": "SS",
+      "currency": "SSP"
+    },
+    "Sudan": {
+      "code": "SD",
+      "currency": "SDG"
+    },
+    "Tanzania": {
+      "code": "TZ",
+      "currency": "TZS"
+    },
+    "Togo": {
+      "code": "TG",
+      "currency": "XOF"
+    },
+    "Tunisia": {
+      "code": "TN",
+      "currency": "TND"
+    },
+    "Uganda": {
+      "code": "UG",
+      "currency": "UGX"
+    },
+    "Zambia": {
+      "code": "ZM",
+      "currency": "ZMW"
+    },
+    "Zimbabwe": {
+      "code": "ZW",
+      "currency": "ZWL"
+    }
+  }
+  

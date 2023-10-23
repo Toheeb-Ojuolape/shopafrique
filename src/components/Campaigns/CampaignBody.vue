@@ -1,8 +1,8 @@
 <template>
   <div>
     <FilterTab />
-    <dashboard-cards />
-    <line-chart :title="'Ad Spend'" :datacollection="ADSPENDDATA"/>
+    <dashboard-cards :user="user" :isUsd="isUsd" :usdValue="usdValue" />
+    <line-chart :title="'Ad Spend'" :datacollection="ADSPENDDATA" />
     <TableComponent
       :title="'Recent Campaigns'"
       :data="campaigns"
@@ -24,6 +24,23 @@ import TableComponent from "../Table/Table.vue";
 import { ADSPENDDATA } from "@/constants/chart/chartdata";
 export default {
   name: "CampaignBody",
+  props: {
+    isCampaigns: {
+      type: Boolean,
+    },
+    campaigns: {
+      type: Array,
+    },
+    user: {
+      type: Object,
+    },
+    usdValue: {
+      type: [Number, String],
+    },
+    isUsd: {
+      type: Boolean,
+    },
+  },
   components: {
     FilterTab,
     DashboardCards,
@@ -41,16 +58,8 @@ export default {
         "Impressions",
         "",
       ],
-      ADSPENDDATA
+      ADSPENDDATA,
     };
-  },
-  props: {
-    isCampaigns: {
-      type: Boolean,
-    },
-    campaigns: {
-      type: Array,
-    },
   },
   methods: {
     handleClick() {

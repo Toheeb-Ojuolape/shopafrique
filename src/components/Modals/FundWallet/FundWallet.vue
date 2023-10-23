@@ -25,7 +25,7 @@
     <v-window v-model="step">
       <v-window-item :value="1">
         <div class="fundingoptions">
-          <HowMuch @setAmount="setAmount" />
+          <HowMuch @setAmount="setAmount" :user="user && user" />
           <FundingOptions @selectOption="selectOption" />
           <FundAlert
             :description="'Your transactions are safe and secure without any hidden costs and charges.'"
@@ -41,11 +41,11 @@
           </PrimaryButton>
 
           <Flutterwave
-            :name="'Tobi'"
-            :email="`tobilobaojuolape@gmail.com`"
+            :name="user && user.firstName"
+            :email="user && user.email"
             :amount="amount"
-            :currency="'NGN'"
-            :country="'NG'"
+            :currency="AFRICANCOUNTRIES[user.country].currency"
+            :country="AFRICANCOUNTRIES[user.country].code"
             ref="flutterwave"
             @handleFlutterwavePayment="handleFlutterwavePayment"
           />
@@ -80,11 +80,17 @@ import InvoiceComponent from "./InvoiceComponent.vue";
 import SuccessComponent from "../../Misc/SuccessComponent.vue";
 import { mapState } from "vuex";
 import handleError from "@/utils/handleErrors";
+import AFRICANCOUNTRIES from "../../../data/africancountries.json";
 Vue.filter("amountToNumber", amountToNumber);
 import { io } from "socket.io-client";
 
 export default {
   name: "FundWallet",
+  props: {
+    user: {
+      type: Object,
+    },
+  },
   components: {
     Icon,
     HowMuch,
@@ -104,6 +110,7 @@ export default {
       fundingoption: "",
       disabled: true,
       socketClient: "",
+      AFRICANCOUNTRIES,
     };
   },
   computed: {
@@ -162,7 +169,7 @@ export default {
       try {
         await this.$store.dispatch("ln/getSatsValue", {
           amount: this.amount,
-          currency: "NGN",
+          currency: this.AFRICANCOUNTRIES[this.user.country].currency,
         });
 
         if (this.fundingoption === "fund-card") {
@@ -171,7 +178,7 @@ export default {
           //generate Invoice
           await this.$store.dispatch("ln/generateInvoice", {
             amount: this.amount,
-            currency: "NGN",
+            currency: this.AFRICANCOUNTRIES[this.user.country].currency,
             socketClient: this.socketClient,
           });
           this.step++;

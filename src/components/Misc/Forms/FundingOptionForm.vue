@@ -1,10 +1,6 @@
 <template>
   <div
-    :class="
-      selected == value
-        ? 'form-checkbox-card'
-        : 'form-checkbox-card'
-    "
+    :class="selected == value ? 'form-checkbox-card' : 'form-checkbox-card'"
     block
   >
     <div class="d-flex">
@@ -60,6 +56,6 @@ export default Vue.extend({
 </script>
   
   
-  <style scoped>
+  <style>
 @import "../../../../styles/forms.css";
 </style>

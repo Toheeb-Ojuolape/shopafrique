@@ -9,6 +9,7 @@ import CampaignView from "../views/CampaignView/CampaignView"
 import AllCampaigns from "../views/CampaignView/AllCampaigns"
 import Wallet from "../views/WalletView/WalletView.vue"
 import Transactions from "../views/TransactionsView/TransactionsView.vue"
+import Settings from "../views/SettingsView/SettingsView.vue"
 
 Vue.use(VueRouter);
 
@@ -63,6 +64,12 @@ const routes = [
     path: "/campaigns/all",
     name: "Campaigns",
     component: AllCampaigns,
+  },
+
+  {
+    path: "/settings",
+    name: "Settings",
+    component: Settings,
   },
 ];
 
