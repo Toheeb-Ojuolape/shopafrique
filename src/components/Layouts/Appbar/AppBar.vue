@@ -61,7 +61,7 @@ export default {
     userData: "",
     name: "",
     items: [
-      { title: "Profile", slug: "/profile", icon: "mdi-account-outline" },
+      { title: "Profile", slug: "/settings", icon: "mdi-account-outline" },
       { title: "Settings", slug: "/settings", icon: "mdi-headphones" },
       { title: "Support", slug: "/support", icon: "mdi-message" },
       { title: "Logout", slug: "logout", icon: "mdi-logout" },
@@ -75,6 +75,8 @@ export default {
       if (item.slug === "logout") {
         sessionStorage.removeItem("userData");
         window.location.href = "/login";
+      } else {
+        this.$router.push(item.slug);
       }
     },
   },
