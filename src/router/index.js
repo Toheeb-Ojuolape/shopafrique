@@ -10,6 +10,7 @@ import AllCampaigns from "../views/CampaignView/AllCampaigns"
 import Wallet from "../views/WalletView/WalletView.vue"
 import Transactions from "../views/TransactionsView/TransactionsView.vue"
 import Settings from "../views/SettingsView/SettingsView.vue"
+import Sites from "../views/SitesView/SitesView.vue"
 
 Vue.use(VueRouter);
 
@@ -71,6 +72,11 @@ const routes = [
     name: "Settings",
     component: Settings,
   },
+  {
+    path:"/sites",
+    name:"Sites",
+    component:Sites
+  }
 ];
 
 

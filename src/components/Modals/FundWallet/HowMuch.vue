@@ -2,7 +2,7 @@
   <v-card class="how__much rounded-xl" flat>
     <div class="how__much__input">
       <div>
-        <span>How much do you wish to add?</span>
+        <span>{{ label }}</span>
         <input
           @input="formatInput"
           v-model="amount"
@@ -10,7 +10,7 @@
           inputmode="numeric"
         />
       </div>
-      <div>
+      <div v-if="!isWithdraw">
         <v-btn small depressed rounded>
           <div>
             <span
@@ -37,6 +37,12 @@ export default {
     user: {
       type: Object,
     },
+    label: {
+      type: String,
+    },
+    isWithdraw:{
+      type:Boolean
+    }
   },
   data() {
     return {

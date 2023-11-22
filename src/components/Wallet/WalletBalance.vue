@@ -4,7 +4,9 @@
       <div>Vyouz Balance</div>
       <h1 v-if="!loading">
         {{ user.balance | amountFormatter }}
-        <span class="usdvalue" v-if="!isUsd">(≈{{ usdValue | dollarFormat }})</span>
+        <span class="usdvalue" v-if="!isUsd"
+          >(≈{{ usdValue | dollarFormat }})</span
+        >
       </h1>
       <h1 v-if="loading">
         <v-progress-circular :color="BRANDCOLOR" indeterminate />
@@ -12,7 +14,12 @@
     </div>
     <div class="mt-4">
       <PrimaryButton :large="true" @handleClick="handleFundWallet"
-        ><v-icon>mdi-plus</v-icon>Add Money</PrimaryButton
+        ><v-icon>{{
+          user && user.businessType === "business" ? "mdi-plus" : "mdi-minus"
+        }}</v-icon
+        >{{
+          user && user.businessType === "business" ? "Add Money" : "Withdraw"
+        }}</PrimaryButton
       >
     </div>
   </div>
