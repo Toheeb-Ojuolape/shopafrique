@@ -17,7 +17,7 @@
     <div>
       <div class="py-5 d-flex justify-center">
         <v-btn depressed class="fundwallet" color="white" large rounded>
-          <Icon :name="'send'" class="mr-2" />FUND WALLET
+          <Icon :name="'send'" class="mr-2" />WITHDRAW FUNDS
         </v-btn>
       </div>
     </div>
@@ -25,34 +25,33 @@
     <v-window v-model="step">
       <v-window-item :value="1">
         <div class="fundingoptions">
-          <HowMuch @setAmount="setAmount" :user="user && user" :isWithdraw="false"/>
-          <FundingOptions @selectOption="selectOption" />
-          <FundAlert
-            :description="'Your transactions are safe and secure without any hidden costs and charges.'"
+          <HowMuch
+            :isWithdraw="true"
+            @setAmount="setAmount"
+            :user="user && user"
+            :label="label"
           />
-          <PrimaryButton
-            :disabled="disabled"
-            :block="true"
-            :large="true"
-            @handleClick="handlePayment"
-            :loading="loading"
-          >
-            Fund Wallet
-          </PrimaryButton>
+          <WithdrawalOptions @selectOption="selectOption" />
 
-          <Flutterwave
-            :name="user && user.firstName"
-            :email="user && user.email"
-            :amount="amount"
-            :currency="AFRICANCOUNTRIES[user.country].currency"
-            :country="AFRICANCOUNTRIES[user.country].code"
-            ref="flutterwave"
-            @handleFlutterwavePayment="handleFlutterwavePayment"
-          />
+          <div v-if="fundingoption" class="my-5">
+            <FormInput
+              :label="`Enter your Lightning ${
+                fundingoption === 'lightning' ? 'Address' : 'Invoice'
+              }`"
+            />
+          </div>
+          <div class="mt-5">
+            <PrimaryButton
+              :disabled="disabled"
+              :block="true"
+              :large="true"
+              @handleClick="handlePayment"
+              :loading="loading"
+            >
+              Withdraw
+            </PrimaryButton>
+          </div>
         </div>
-      </v-window-item>
-      <v-window-item :value="2">
-        <InvoiceComponent :invoice="invoice" />
       </v-window-item>
 
       <v-window-item :value="3">
@@ -65,24 +64,22 @@
     </v-window>
   </v-card>
 </template>
-
-
-<script>
+  
+  
+  <script>
 import Vue from "vue";
 import Icon from "../../../assets/icons/Icon.vue";
-import FundingOptions from "./FundingOptions.vue";
-import HowMuch from "./HowMuch.vue";
-import FundAlert from "./FundAlert.vue";
+import WithdrawalOptions from "./WithdrawalOptions.vue";
+import HowMuch from "../FundWallet/HowMuch.vue";
 import PrimaryButton from "@/components/Buttons/PrimaryButton.vue";
-import Flutterwave from "../../Services/Payments/Flutterwave.vue";
 import { amountToNumber } from "../../../utils/amountFormatter.js";
-import InvoiceComponent from "./InvoiceComponent.vue";
 import SuccessComponent from "../../Misc/SuccessComponent.vue";
 import { mapState } from "vuex";
-import handleError from "@/utils/handleErrors";
+// import handleError from "@/utils/handleErrors";
 import AFRICANCOUNTRIES from "../../../data/africancountries.json";
 Vue.filter("amountToNumber", amountToNumber);
 import { io } from "socket.io-client";
+import FormInput from "@/components/Misc/Forms/FormInput.vue";
 
 export default {
   name: "FundWallet",
@@ -90,16 +87,17 @@ export default {
     user: {
       type: Object,
     },
+    label: {
+      type: String,
+    },
   },
   components: {
     Icon,
     HowMuch,
-    FundingOptions,
-    FundAlert,
+    WithdrawalOptions,
     PrimaryButton,
-    Flutterwave,
-    InvoiceComponent,
     SuccessComponent,
+    FormInput,
   },
   data() {
     return {
@@ -165,27 +163,8 @@ export default {
       this.fundingoption = e;
     },
 
-    async handlePayment() {
-      try {
-        await this.$store.dispatch("ln/getSatsValue", {
-          amount: this.amount,
-          currency: this.AFRICANCOUNTRIES[this.user.country].currency,
-        });
-
-        if (this.fundingoption === "fund-card") {
-          this.$refs.flutterwave.handleClick();
-        } else {
-          //generate Invoice
-          await this.$store.dispatch("ln/generateInvoice", {
-            amount: this.amount,
-            currency: this.AFRICANCOUNTRIES[this.user.country].currency,
-            socketClient: this.socketClient,
-          });
-          this.step++;
-        }
-      } catch (error) {
-        handleError(error.message);
-      }
+    handlePayment() {
+      this.step = 3;
     },
 
     async handleFlutterwavePayment() {

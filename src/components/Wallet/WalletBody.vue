@@ -18,7 +18,19 @@
     />
 
     <v-dialog persistent v-model="fundwallet" max-width="500px">
-      <FundWallet :user="user" @handleClose="handleClose" />
+      <FundWallet
+        :user="user"
+        @handleClose="handleClose"
+        :label="'How much do you wish to add?'"
+      />
+    </v-dialog>
+
+    <v-dialog persistent v-model="withdraw" max-width="500px">
+      <WithdrawFunds
+        :user="user"
+        @handleClose="handleClose"
+        :label="'How much do you wish to withdraw (in sats)?'"
+      />
     </v-dialog>
   </div>
 </template>
@@ -29,6 +41,7 @@ import WalletBalance from "./WalletBalance.vue";
 import LineChart from "../Charts/LineChart.vue";
 import TableComponent from "../Table/Table.vue";
 import FundWallet from "../Modals/FundWallet/FundWallet.vue";
+import WithdrawFunds from "../Modals/Withdrawal/WithdrawFunds.vue";
 import { mapState } from "vuex";
 import { WALLETHEADING } from "@/constants/constants";
 import { ADSPENDDATA } from "@/constants/chart/chartdata";
@@ -39,6 +52,7 @@ export default {
     LineChart,
     TableComponent,
     FundWallet,
+    WithdrawFunds,
   },
   props: {
     user: {
@@ -64,6 +78,7 @@ export default {
     return {
       WALLETHEADING: WALLETHEADING,
       fundwallet: false,
+      withdraw: false,
       ADSPENDDATA,
     };
   },
@@ -77,10 +92,18 @@ export default {
       this.$router.push("/transactions");
     },
     handleFundWallet() {
-      this.fundwallet = !this.fundwallet;
+      if (this.user.businessType === "business") {
+        this.fundwallet = !this.fundwallet;
+      } else {
+        this.withdraw = !this.withdraw;
+      }
     },
     handleClose() {
-      this.fundwallet = !this.fundwallet;
+      if (this.user.businessType === "business") {
+        this.fundwallet = !this.fundwallet;
+      } else {
+        this.withdraw = !this.withdraw;
+      }
     },
   },
 };
