@@ -119,6 +119,11 @@ a {
     display: flex;
     justify-content: space-between;
   }
+
+  .setuprogress {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+  }
 }
 
 @media only screen and (min-width: 600px) {
@@ -126,10 +131,44 @@ a {
     display: flex;
     justify-content: space-between;
   }
+  .setup-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px;
+  }
+
+  .setuprogress {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    margin: 0px 20px 0px 0px;
+  }
 }
 
-
-
-.v-tab{
+.v-tab {
   text-transform: capitalize !important;
+}
+
+.progress-bar {
+  position: relative;
+  background: #f3f5f9;
+  width: 130px;
+  margin: 10px 19px 0px 0px;
+  border-radius: 20px;
+  height: 10px;
+}
+
+.progress {
+  position: absolute;
+  top: 0;
+  background: #2d55fb;
+  border-radius: 20px;
+  height: 10px;
+}
+
+.expansion-footer {
+  background: #f3f5f9;
+  padding:10px 10px;
+  width:100%;
+  display:flex;
+  justify-content: flex-end;
 }

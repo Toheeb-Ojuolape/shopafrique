@@ -1,0 +1,37 @@
+.platform-cards {
+  display: flex;
+  grid-gap: 10px;
+  margin: 10px 0px 30px 0px;
+}
+
+.platform-button {
+  background: linear-gradient(0deg, white 0%, white 100%),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  box-shadow: 0px 0px 0px 1px #eceff3;
+  border-radius: 8px;
+  max-width: 230px;
+}
+
+.active {
+  background: var(--brandcolor) !important;
+  color: white !important;
+}
+
+
+.code-snippet{
+  padding:20px 19px;
+  background:#F3F5F9;
+  border-radius:20px;
+  margin:20px 0px
+}
+
+.code{
+  padding:10px;
+  color:white;
+  background:#141B29;
+  margin:20px 0px
+}
