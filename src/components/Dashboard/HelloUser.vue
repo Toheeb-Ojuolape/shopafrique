@@ -12,9 +12,11 @@
         <span>We hope you are having a great day.</span>
       </div>
     </div>
-    <div class="d-flex buttons">
+    <div v-if="user.businessType === 'business'" class="d-flex buttons">
       <v-btn class="rounded-lg mr-2" outlined>Export data</v-btn>
-      <PrimaryButton @handleClick="newCampaign"><v-icon>mdi-plus</v-icon>Create Campaign</PrimaryButton>
+      <PrimaryButton @handleClick="newCampaign"
+        ><v-icon>mdi-plus</v-icon>Create Campaign</PrimaryButton
+      >
     </div>
   </div>
 </template>
@@ -32,10 +34,10 @@ export default {
       type: Object,
     },
   },
-  methods:{
-    newCampaign(){
-        this.$router.push('/create-campaign')
-    }
-  }
+  methods: {
+    newCampaign() {
+      this.$router.push("/create-campaign");
+    },
+  },
 };
 </script>
