@@ -1,32 +1,35 @@
 <template>
   <div>
-    <FilterTab />
-    <dashboard-cards :user="user" :isUsd="isUsd" :usdValue="usdValue" />
-    <line-chart :title="'Ad Spend'" :datacollection="ADSPENDDATA" />
+    <FilterTab @addSite="addSite" />
+    <SitesCards :user="user" :isUsd="isUsd" :usdValue="usdValue" />
     <TableComponent
-      :title="'Recent Campaigns'"
+      :title="'All Sites'"
       :data="campaigns"
       :heading="heading"
-      :buttonTitle="'See all campaigns'"
+      :buttonTitle="'See all sites'"
       @handleClick="handleClick"
       :type="'campaign'"
       :loading="isCampaigns"
-      :emptytitle="'Get started with campaigns'"
-      :emptybutton="'Create Campaign'"
-      :emptydescription="'Your campaigns will appear here'"
-      @emptyClick="createCampaign"
-      :emptyimage="'empty-campaign'"
+      :emptytitle="'No site to show'"
+      :emptybutton="'Add site'"
+      :emptydescription="'Add a new site to start earning'"
+      @emptyClick="addSite"
+      :emptyimage="'empty-sites'"
     />
+
+    <v-dialog persistent max-width="500px" v-model="addsite">
+      <AddSite :user="user" @handleClose="handleClose" />
+    </v-dialog>
   </div>
 </template>
-
-
-<script>
+  
+  
+  <script>
 import FilterTab from "./FilterTab.vue";
-import DashboardCards from "../Dashboard/DashboardCards.vue";
-import LineChart from "../Charts/LineChart.vue";
+import SitesCards from "./SitesCards.vue";
 import TableComponent from "../Table/Table.vue";
 import { ADSPENDDATA } from "@/constants/chart/chartdata";
+import AddSite from "../Modals/AddSite/AddSite.vue";
 export default {
   name: "CampaignBody",
   props: {
@@ -48,31 +51,36 @@ export default {
   },
   components: {
     FilterTab,
-    DashboardCards,
-    LineChart,
+    SitesCards,
     TableComponent,
+    AddSite,
   },
   data() {
     return {
       heading: [
-        "Title",
+        "Site Url",
         "Status",
         "Date created",
-        "Budget",
+        "Approval Status",
         "Clicks",
-        "Impressions",
+        "",
         "",
       ],
       ADSPENDDATA,
+      addsite: false,
     };
   },
   methods: {
-    handleClick() {
-      this.$router.push("/campaigns/all");
+    addSite() {
+      this.addsite = !this.addsite;
     },
-    createCampaign(){
-      this.$router.push("/create-campaign");
-    }
+
+    handleClick() {
+      alert("ak");
+    },
+    handleClose() {
+      this.addsite = !this.addsite;
+    },
   },
 };
 </script>

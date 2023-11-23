@@ -7,7 +7,7 @@
       </template>
     </v-expansion-panel-header>
     <v-expansion-panel-content>
-      <component :code="code" :is="component" />
+      <component :code="code" :is="component" :isAddSite="false"/>
       <ExpansionFooter v-if="type != 'integration'" @saveInfo="saveInfo" @goBack="goBack"/>
       <TestConnection v-if="type == 'integration'" />
     </v-expansion-panel-content>

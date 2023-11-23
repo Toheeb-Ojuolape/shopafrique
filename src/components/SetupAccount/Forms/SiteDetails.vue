@@ -1,9 +1,8 @@
 <template>
   <div>
-    <p>
+    <p v-if="isAddSite">
       Earn by advertising on your terms – connect your website, social, and game
-      accounts <br />
-      and reach your audience wherever they are
+      accounts and reach your audience wherever they are
     </p>
 
     <div>
@@ -63,6 +62,11 @@ import PlatformCard from "@/components/Misc/Creator/PlatformCard.vue";
 export default {
   components: {
     PlatformCard,
+  },
+  props: {
+    isAddSite: {
+      type: Boolean,
+    },
   },
   data() {
     return {
