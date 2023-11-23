@@ -63,7 +63,13 @@
     </div>
 
     <div class="my-5" v-if="!loading && !data.length">
-      <NothingToSee />
+      <NothingToSee
+        :title="emptytitle"
+        :description="emptydescription"
+        :buttonText="emptybutton"
+        @emptyClick="emptyClick"
+        :image="emptyimage"
+      />
     </div>
   </div>
 </template>
@@ -105,6 +111,18 @@ export default {
     loading: {
       type: Boolean,
     },
+    emptytitle: {
+      type: String,
+    },
+    emptydescription: {
+      type: String,
+    },
+    emptybutton: {
+      type: String,
+    },
+    emptyimage: {
+      type: String,
+    },
   },
   components: {
     NothingToSee,
@@ -117,6 +135,9 @@ export default {
     };
   },
   methods: {
+    emptyClick() {
+      this.$emit("emptyClick");
+    },
     handleClick() {
       this.$emit("handleClick");
     },
