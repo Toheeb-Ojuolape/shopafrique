@@ -17,6 +17,15 @@
 
       <label>Phone</label>
       <FormInput />
+
+      <label>What's your niche</label>
+      <FormInput />
+
+      <label>Target Demographic</label>
+      <v-select dense outlined></v-select>
+
+      <label>Age group</label>
+      <FormInput />
     </v-form>
   </div>
 </template>

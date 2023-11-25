@@ -11,6 +11,7 @@ import Wallet from "../views/WalletView/WalletView.vue"
 import Transactions from "../views/TransactionsView/TransactionsView.vue"
 import Settings from "../views/SettingsView/SettingsView.vue"
 import Sites from "../views/SitesView/SitesView.vue"
+import Photo from "../views/Photo/PhotoView.vue"
 
 Vue.use(VueRouter);
 
@@ -76,6 +77,11 @@ const routes = [
     path:"/sites",
     name:"Sites",
     component:Sites
+  },
+  {
+    path:"/photos",
+    name:"Photos",
+    component:Photo
   }
 ];
 
