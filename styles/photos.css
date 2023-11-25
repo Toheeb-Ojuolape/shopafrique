@@ -1,0 +1,44 @@
+.photoform-container {
+
+  background-image: url("../src/assets/signup-image.jpg");
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  background-size: cover;
+  padding: 40px 0px;
+}
+
+@media only screen and (max-width: 600px) {
+  .photo-upload-form {
+    width: 400px !important;
+    border-radius: 10px !important;
+    padding: 30px 15px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .photo-upload-form {
+    width: 500px !important;
+    border-radius: 10px !important;
+    padding: 30px 30px;
+
+  }
+}
+
+.image-upload {
+  border: 1px dashed #cad7e4;
+  border-radius: 10px;
+  display:flex;
+  justify-content: center;
+  padding:19px 0px
+}
+
+
+.photo-selected{
+    border:1px solid #cad7e4;
+    border-radius:10px;
+    margin:10px 0px;
+    display:flex;
+    gap:10px;
+    padding:10px
+}

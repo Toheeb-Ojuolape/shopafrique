@@ -37,7 +37,6 @@ export default {
   methods: {
     handleClose() {
       location.reload()
-      this.$emit("handleClose");
     },
   },
 };

@@ -1,0 +1,1135 @@
+{
+	"info": {
+		"_postman_id": "3eb4b25a-a082-417d-93b6-add0e7470884",
+		"name": "Vyouz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25719172"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Verify Email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"tobilobaojuolape1@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev_url}}/auth/verify-email",
+							"host": [
+								"{{dev_url}}"
+							],
+							"path": [
+								"auth",
+								"verify-email"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"tobilobaojuolape@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dev_url}}/auth/verify-email",
+									"host": [
+										"{{dev_url}}"
+									],
+									"path": [
+										"auth",
+										"verify-email"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 10 Sep 2023 16:44:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"sessionId\": \"9454597911\"\n    },\n    \"message\": \"OTP sent successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Resend OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sessionId\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev_url}}/auth/resend-otp",
+							"host": [
+								"{{dev_url}}"
+							],
+							"path": [
+								"auth",
+								"resend-otp"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"sessionId\":\"1618466908\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dev_url}}/auth/resend-otp",
+									"host": [
+										"{{dev_url}}"
+									],
+									"path": [
+										"auth",
+										"resend-otp"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 11 Sep 2023 14:24:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"sessionId\": \"6695996538\"\n    },\n    \"message\": \"OTP sent successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Verify Otp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"otp\":\"960758\",\r\n    \"sessionId\":\"9454597911\",\r\n    \"processType\":\"SIGNUP\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev_url}}/auth/verify-otp",
+							"host": [
+								"{{dev_url}}"
+							],
+							"path": [
+								"auth",
+								"verify-otp"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"otp\":\"842450\",\r\n    \"sessionId\":\"8716088948\",\r\n    \"processType\":\"signup\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dev_url}}/auth/verify-otp",
+									"host": [
+										"{{dev_url}}"
+									],
+									"path": [
+										"auth",
+										"verify-otp"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 10 Sep 2023 12:11:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"3916454223\",\n    \"message\": \"OTP verified successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"tobilobaojuolape@gmail.com\",\r\n    \"firstName\":\"Tobi\",\r\n    \"lastName\":\"Ojuolape\",\r\n    \"businesstype\":\"online\",\r\n    \"businessname\":\"tell\",\r\n    \"country\":\"Nigeria\",\r\n    \"password\":\"TOBBYAs2@#&\",\r\n    \"processId\":\"6075278004\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev_url}}/auth/signup",
+							"host": [
+								"{{dev_url}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"tobilobaojuolape@gmail.com\",\r\n    \"firstName\":\"Tobi\",\r\n    \"lastName\":\"Ojuolape\",\r\n    \"businesstype\":\"online\",\r\n    \"businessname\":\"tell\",\r\n    \"country\":\"Nigeria\",\r\n    \"password\":\"TOBBYAs2@#&\",\r\n    \"processId\":\"6075278004\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dev_url}}/auth/signup",
+									"host": [
+										"{{dev_url}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 10 Sep 2023 16:45:44 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "104"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"ERROR: duplicate key value violates unique constraint \\\"users_email_key\\\" (SQLSTATE 23505)\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"toheebojuolape7@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev_url}}/auth/forgot-password",
+							"host": [
+								"{{dev_url}}"
+							],
+							"path": [
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"toheebojuolape7@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dev_url}}/auth/forgot-password",
+									"host": [
+										"{{dev_url}}"
+									],
+									"path": [
+										"auth",
+										"forgot-password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 10 Sep 2023 17:09:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"sessionId\": \"1831266461\"\n    },\n    \"message\": \"OTP sent successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"processId\":\"6943303304\",\r\n    \"password\":\"TOBBYAs2@#&2022\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev_url}}/auth/reset-password",
+							"host": [
+								"{{dev_url}}"
+							],
+							"path": [
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"processId\":\"6943303304\",\r\n    \"password\":\"TOBBYAs2@#&2022\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dev_url}}/auth/reset-password",
+									"host": [
+										"{{dev_url}}"
+									],
+									"path": [
+										"auth",
+										"reset-password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 10 Sep 2023 17:10:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "55"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": null,\n    \"message\": \"Password updated successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"toheebojuolape7@gmail.com\",\r\n    \"password\":\"TOBBYAs2@#&\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev_url}}/auth/login",
+							"host": [
+								"{{dev_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"tobilobaojuolape@gmail.com\",\r\n    \"password\":\"TOBBYAs2@#&\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{dev_url}}/auth/login",
+									"host": [
+										"{{dev_url}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 10 Sep 2023 17:42:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "305"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "Authorization=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTY5NTk3NDEsInN1YiI6ImFlODQyNjJlLWNmMTctNDQ2NS05M2VkLWE1M2Y0MzYxZWVkYyJ9.J2PpM-7KX4cQKc7hwvd1Pp-SO69OTQmlGUoMwFg69J8; expires=Tue, 10 Oct 2023 17:42:21 GMT; path=/; HttpOnly; SameSite=Lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"balance\": 0,\n        \"email\": \"tobilobaojuolape@gmail.com\",\n        \"firstName\": \"Tobi\",\n        \"lastName\": \"Ojuolape\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTY5NTk3NDEsInN1YiI6ImFlODQyNjJlLWNmMTctNDQ2NS05M2VkLWE1M2Y0MzYxZWVkYyJ9.J2PpM-7KX4cQKc7hwvd1Pp-SO69OTQmlGUoMwFg69J8\"\n    },\n    \"message\": \"Login Successful\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Campaigns",
+			"item": [
+				{
+					"name": "Create Campaign",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDAzMzU2MjMsInN1YiI6ImMxM2Q1ZWU3LTEwYmEtNDVjNy04MTE5LTQ2OTBhNjQwOWEwOSJ9.utHQeMM0wjMG1Okz-g058NuB_uH0i4_qyE-Q7nLhJGA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Testing debitting campaign\",\r\n    \"description\": \"testing campaign creation\",\r\n    \"media\": \"https://sdsdsdsd\",\r\n    \"mediaType\": \"video\",\r\n    \"budget\": 3000000,\r\n    \"status\": \"active\",\r\n    \"clicks\": 0,\r\n    \"impressions\": 0,\r\n    \"startDate\": \"2023-12-12\",\r\n    \"endDate\": \"2023-12-12\",\r\n    \"objective\": \"drive-traffic\",\r\n    \"audience\": {\r\n        \"age\": \"40-56\",\r\n        \"countries\": \"Nigeria,Ghana\",\r\n        \"gender\":\"male\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev_url}}/campaigns",
+							"host": [
+								"{{dev_url}}"
+							],
+							"path": [
+								"campaigns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Campaigns",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDAyNTM2MTYsInN1YiI6ImFiZDFjMGRkLTM0ODYtNDMwZS1hNTNiLWNjZDU3M2MyNGMzZCJ9.w5ZiRPoyQEB-BtXgj9OnEb4SmzHCSB8Q9Fz1PLRYLvw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev_url}}/campaigns",
+							"host": [
+								"{{dev_url}}"
+							],
+							"path": [
+								"campaigns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch single campaign",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev_url}}/campaigns/1ff97941-3f8c-42d7-91bb-407bf5dab13e",
+							"host": [
+								"{{dev_url}}"
+							],
+							"path": [
+								"campaigns",
+								"1ff97941-3f8c-42d7-91bb-407bf5dab13e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Campaign",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{dev_url}}/campaigns/i",
+							"host": [
+								"{{dev_url}}"
+							],
+							"path": [
+								"campaigns",
+								"i"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Wallet",
+			"item": [
+				{
+					"name": "Fund Wallet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDAxNjgzNjYsInN1YiI6ImMxM2Q1ZWU3LTEwYmEtNDVjNy04MTE5LTQ2OTBhNjQwOWEwOSJ9.fXuiVnVYnw0CUEunAtwk7sYjDlxoh1ZcSAN_A0T0CKc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"type\":\"wallet-funding\",\r\n    \"amount\":40000,\r\n\t\"paymentMethod\":\"card-funding\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dev_url}}/wallet/fund-wallet",
+							"host": [
+								"{{dev_url}}"
+							],
+							"path": [
+								"wallet",
+								"fund-wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Transactions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDAxNjgzNjYsInN1YiI6ImMxM2Q1ZWU3LTEwYmEtNDVjNy04MTE5LTQ2OTBhNjQwOWEwOSJ9.fXuiVnVYnw0CUEunAtwk7sYjDlxoh1ZcSAN_A0T0CKc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev_url}}/wallet/transactions",
+							"host": [
+								"{{dev_url}}"
+							],
+							"path": [
+								"wallet",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Fetch User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDAxNjgzNjYsInN1YiI6ImMxM2Q1ZWU3LTEwYmEtNDVjNy04MTE5LTQ2OTBhNjQwOWEwOSJ9.fXuiVnVYnw0CUEunAtwk7sYjDlxoh1ZcSAN_A0T0CKc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{dev_url}}/user",
+							"host": [
+								"{{dev_url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Fetch User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTY5NjQwMjksInN1YiI6ImFlODQyNjJlLWNmMTctNDQ2NS05M2VkLWE1M2Y0MzYxZWVkYyJ9.F3LtrgaqIa-ggmNZApO7-d9qiGoDtKuLm-lzZyyQhRk",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{dev_url}}/user",
+									"host": [
+										"{{dev_url}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 10 Sep 2023 19:02:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "182"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"balance\": 0,\n        \"businessName\": \"tell\",\n        \"businessType\": \"online\",\n        \"country\": \"Nigeria\",\n        \"email\": \"toheebojuolape7@gmail.com\",\n        \"firstName\": \"Tobi\",\n        \"lastName\": \"Ojuolape\"\n    },\n    \"message\": \"user\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "LN",
+			"item": [
+				{
+					"name": "Invoice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\":40000,\r\n    \"currency\":\"NGN\",\r\n    \"sats\":3000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ln_url}}/ln/invoice",
+							"host": [
+								"{{ln_url}}"
+							],
+							"path": [
+								"ln",
+								"invoice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sats Value",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ln_url}}/ln/sats?",
+							"host": [
+								"{{ln_url}}"
+							],
+							"path": [
+								"ln",
+								"sats"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get USD value",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Stripe",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 37B5F4239222AD76D0490A102C5B2AC33EE75EB9A8F62CA4D2CDBF84BFCC94D5",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"sell\": \"USD\",\r\n  \"buy\": \"BTC\",\r\n  \"amount\": {\r\n    \"amount\": \"10.99\",\r\n    \"currency\": \"USD\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.strike.me/v1/currency-exchange-quotes/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"strike",
+								"me"
+							],
+							"path": [
+								"v1",
+								"currency-exchange-quotes",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Kollider StableSats",
+			"item": [
+				{
+					"name": "New Folder",
+					"item": []
+				},
+				{
+					"name": "Get Node Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://lndhubx.kollider.xyz/api/nodeinfo",
+							"protocol": "https",
+							"host": [
+								"lndhubx",
+								"kollider",
+								"xyz"
+							],
+							"path": [
+								"api",
+								"nodeinfo"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://lndhubx.kollider.xyz/api/nodeinfo",
+									"protocol": "https",
+									"host": [
+										"lndhubx",
+										"kollider",
+										"xyz"
+									],
+									"path": [
+										"api",
+										"nodeinfo"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 15 Sep 2023 13:59:03 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "access-control-expose-headers",
+									"value": "content-type"
+								},
+								{
+									"key": "x-ratelimit-limit",
+									"value": "20"
+								},
+								{
+									"key": "x-ratelimit-reset",
+									"value": "5"
+								},
+								{
+									"key": "vary",
+									"value": "Origin, Access-Control-Request-Method, Access-Control-Request-Headers"
+								},
+								{
+									"key": "access-control-allow-credentials",
+									"value": "true"
+								},
+								{
+									"key": "x-ratelimit-remaining",
+									"value": "19"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=0o1Vp10pgzT5vy%2Bcug4CNaJy85IVkdSVJGNPtBXDzh6kXu94KqiN%2BO6cWo%2Fk9785hmbAhHJuF2Uy0%2Fy%2Fe6NzlS1vK4DHIZ7rsZNkeCGewijA3pGC4%2F1DpRY8LHE5K5mxqT8o2G9xHA%3D%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "NEL",
+									"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "8071635538690b88-AMS"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"req_id\": \"8d4a848a-e6f3-47cf-a81c-eca791007286\",\n    \"lnd_node_info\": {\n        \"identity_pubkey\": \"021946ab4ff361af6251259c5089c2b7d8924d72588c67052a6052354ee4b55632\",\n        \"uris\": [\n            \"021946ab4ff361af6251259c5089c2b7d8924d72588c67052a6052354ee4b55632@34.245.85.117:9735\"\n        ],\n        \"num_active_channels\": 9,\n        \"num_pending_channels\": 0,\n        \"num_peers\": 3,\n        \"testnet\": false\n    },\n    \"ln_network_max_fee\": \"0.01\",\n    \"ln_network_fee_margin\": \"0.005\",\n    \"reserve_ratio\": \"0.75\",\n    \"external_tx_fee\": \"0\",\n    \"internal_tx_fee\": \"0.0001\",\n    \"error\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Create account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"tobi\",\r\n    \"password\": \"TOBBYAS2@#&\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lndhubx.kollider.xyz/api/create",
+							"protocol": "https",
+							"host": [
+								"lndhubx",
+								"kollider",
+								"xyz"
+							],
+							"path": [
+								"api",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"tobi\",\r\n    \"password\": \"TOBBYAs2@#&\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://lndhubx.kollider.xyz/api/auth",
+							"protocol": "https",
+							"host": [
+								"lndhubx",
+								"kollider",
+								"xyz"
+							],
+							"path": [
+								"api",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Health check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{dev_url}}/healthcheck",
+					"host": [
+						"{{dev_url}}"
+					],
+					"path": [
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "dev_url",
+			"value": "http://localhost:5000/api",
+			"type": "string"
+		},
+		{
+			"key": "ln_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "prod_url",
+			"value": "https://vyouz.miniemoneyapi.com/api",
+			"type": "string"
+		}
+	]
+}
