@@ -2,9 +2,15 @@
   <div>
     <div class="setup-container">
       <h3>Let's setup your account</h3>
-      <SetupProgress :progress="progress" :step="step" />
+      <SetupProgress :user="user" :progress="progress" :step="step" />
     </div>
-    <SetupAccountForm @setProgress="setProgress" @setStep="setStep" />
+    <SetupAccountForm
+      :user="user"
+      @setProgress="setProgress"
+      @setStep="setStep"
+      :loading="loading"
+      :code="code"
+    />
   </div>
 </template>
 
@@ -23,6 +29,17 @@ export default {
       progress: 30,
       step: 1,
     };
+  },
+  props: {
+    user: {
+      type: Object,
+    },
+    loading: {
+      type: Boolean,
+    },
+    code: {
+      type: String,
+    },
   },
   methods: {
     setProgress(e) {

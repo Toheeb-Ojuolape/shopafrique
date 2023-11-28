@@ -47,7 +47,7 @@ export default {
 
   created() {
     this.$store.dispatch("fetchUser");
-    this.$store.dispatch("campaigns/fetchCampaigns");
+    this.$store.dispatch("campaign/fetchCampaigns");
   },
 
   methods: {

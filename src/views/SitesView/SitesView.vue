@@ -1,8 +1,8 @@
 <template>
   <DashboardLayout>
     <SitesBody
-      :campaigns="campaigns"
-      :isCampaigns="isCampaigns"
+      :sites="sites"
+      :isSites="loading"
       :user="user"
       :isUsd="isUsd"
       :usdValue="usdValue"
@@ -31,9 +31,10 @@ export default {
       usdValue: (state) => state.usdValue,
       isUsd: (state) => state.loading,
     }),
-    ...mapState("campaigns", {
-      campaigns: (state) => state.campaigns,
-      isCampaigns: (state) => state.loading,
+    ...mapState("creator", {
+      loading: (state) => state.loading,
+      code: (state) => state.code,
+      sites: (state) => state.sites,
     }),
   },
 
@@ -47,7 +48,7 @@ export default {
 
   created() {
     this.$store.dispatch("fetchUser");
-    this.$store.dispatch("campaigns/fetchCampaigns");
+    this.$store.dispatch("creator/fetchSites");
   },
 };
 </script>

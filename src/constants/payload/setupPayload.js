@@ -6,4 +6,10 @@ export const CAMPAIGNPAYLOAD = {
     platform: "",
     socialMedia: "",
   };
+
+export const AUDIENCEPAYLOAD = {
+  niche:"",
+  targetDemographic:"",
+  ageGroup:""
+}
   

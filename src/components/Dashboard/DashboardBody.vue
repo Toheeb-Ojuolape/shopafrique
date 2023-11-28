@@ -6,8 +6,19 @@
       <LineChart :title="'Total Views'" :datacollection="CLICKSDATA" />
       <LineChart :title="'Total Clicks'" :datacollection="VIEWSDATA" />
     </div>
-    <div>
-      <SetupAccount />
+    <div v-if="user.businessType === 'creator' && completedSite">
+      <SetupAccount
+        :user="user"
+        :loading="loading"
+        :code="code"
+        :sites="sites"
+      />
+    </div>
+    <div v-else>
+      <PageTitle :icon="'mdi-view-grid-outline'" :title="'Business Insights'" />
+      <DashboardCards :user="user" :usdValue="usdValue" :isUsd="isUsd" />
+      <LineChart :title="'Total Views'" :datacollection="CLICKSDATA" />
+      <LineChart :title="'Total Clicks'" :datacollection="VIEWSDATA" />
     </div>
   </div>
 </template>
@@ -33,12 +44,32 @@ export default {
     isUsd: {
       type: Boolean,
     },
+    loading: {
+      type: Boolean,
+    },
+    code: {
+      type: String,
+    },
+    sites: {
+      type: Array,
+    },
   },
   data() {
     return {
       CLICKSDATA,
       VIEWSDATA,
     };
+  },
+  computed: {
+    completedSite() {
+      if (
+        this.sites.filter((site) => site.Status === "completed").length >= 1
+      ) {
+        return false;
+      } else {
+        return true;
+      }
+    },
   },
 };
 </script>

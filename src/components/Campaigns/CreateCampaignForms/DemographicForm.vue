@@ -53,7 +53,6 @@
         chips
         multiple
         dense
-        style="height: 56px"
         @change="setCountry"
       ></v-select>
 
@@ -67,7 +66,6 @@
         chips
         multiple
         dense
-        style="height: 56px"
         @change="setAge"
       ></v-select>
 

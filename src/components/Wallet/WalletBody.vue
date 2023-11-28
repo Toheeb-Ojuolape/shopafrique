@@ -42,7 +42,6 @@ import LineChart from "../Charts/LineChart.vue";
 import TableComponent from "../Table/Table.vue";
 import FundWallet from "../Modals/FundWallet/FundWallet.vue";
 import WithdrawFunds from "../Modals/Withdrawal/WithdrawFunds.vue";
-import { mapState } from "vuex";
 import { WALLETHEADING } from "@/constants/constants";
 import { ADSPENDDATA } from "@/constants/chart/chartdata";
 export default {
@@ -81,11 +80,6 @@ export default {
       withdraw: false,
       ADSPENDDATA,
     };
-  },
-  computed: {
-    ...mapState({
-      campaigns: "campaigns",
-    }),
   },
   methods: {
     handleClick() {

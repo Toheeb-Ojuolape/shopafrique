@@ -97,6 +97,13 @@ a {
   text-align: center !important;
 }
 
+
+.pending {
+  color: #e86b10 !important;
+  background: #fddb7785 !important;
+  text-align: center !important;
+}
+
 .modal-logo {
   border-bottom: 1px solid #cad3e5;
   padding: 15px 15px 10px 15px;

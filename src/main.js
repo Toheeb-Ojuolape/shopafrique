@@ -7,11 +7,13 @@ import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 import { TOASTCONFIG } from "./constants/toastConfig";
 import Flutterwave from "flutterwave-vue-v3";
+import { db } from "./services/Firebase/firebase";
 
 Vue.config.productionTip = false;
 
 Vue.use(Toast, TOASTCONFIG);
 Vue.use(Flutterwave, { publicKey: process.env.VUE_APP_FLUTTERWAVE_KEY });
+
 
 new Vue({
   vuetify,
@@ -19,3 +21,5 @@ new Vue({
   store,
   render: (h) => h(App),
 }).$mount("#app");
+
+export { db };

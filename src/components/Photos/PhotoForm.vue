@@ -1,18 +1,23 @@
 <template>
-    <div class="photoform-container">
-        <PhotoUpload />
-    </div>
+  <div class="photoform-container">
+    <PhotoUpload :loading="loading" />
+  </div>
 </template>
 
 
 
 <script>
-import PhotoUpload from './PhotoUpload.vue'
+import PhotoUpload from "./PhotoUpload.vue";
 export default {
-    components:{
-        PhotoUpload
-    }
-}
+  components: {
+    PhotoUpload,
+  },
+  props: {
+    loading: {
+      type: Boolean,
+    },
+  },
+};
 </script>
 
 

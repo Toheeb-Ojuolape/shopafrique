@@ -1,7 +1,13 @@
 <template>
   <div class="expansion-footer">
     <v-btn @click="goBack" depressed color="white" class="mr-4">Cancel</v-btn>
-    <PrimaryButton @handleClick="saveInfo"> Save </PrimaryButton>
+    <PrimaryButton
+      :loading="loading"
+      :disabled="cansave"
+      @handleClick="saveInfo"
+    >
+      Save
+    </PrimaryButton>
   </div>
 </template>
 
@@ -11,6 +17,14 @@ import PrimaryButton from "../Buttons/PrimaryButton.vue";
 export default {
   components: {
     PrimaryButton,
+  },
+  props: {
+    cansave: {
+      type: Boolean,
+    },
+    loading: {
+      type: Boolean,
+    },
   },
   methods: {
     saveInfo() {

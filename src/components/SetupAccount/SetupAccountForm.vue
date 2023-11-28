@@ -7,6 +7,10 @@
           :component="BasicInformation"
           @saveInfo="nextDetails"
           @goBack="goBack"
+          :user="user"
+          @handleInput="handleInput"
+          :cansave="cansave"
+          :loading="loading"
         />
       </v-expansion-panels>
 
@@ -16,6 +20,9 @@
           :component="SiteDetails"
           @saveInfo="nextIntegrate"
           @goBack="goBack"
+          @handleInput="handleSiteDetails"
+          :loading="loading"
+          :code="code"
         />
       </v-expansion-panels>
 
@@ -26,6 +33,8 @@
           :code="code"
           :type="'integration'"
           @goBack="goBack"
+          @saveInfo="verifySite"
+          :loading="loading"
         />
       </v-expansion-panels>
     </div>
@@ -34,16 +43,31 @@
   
   
 <script>
-import { CAMPAIGNPAYLOAD } from "../../constants/payload/setupPayload";
+import {
+  CAMPAIGNPAYLOAD,
+  AUDIENCEPAYLOAD,
+} from "../../constants/payload/setupPayload";
 import SetupForm from "./SetupForm.vue";
 import BasicInformation from "./Forms/BasicInformation.vue";
 import SiteDetails from "./Forms/SiteDetails.vue";
 import IntegrateVyouz from "./Forms/IntegrateVyouz.vue";
+import { isEmpty } from "../../utils/validator";
 
 export default {
   name: "SetupAccountForm",
   components: {
     SetupForm,
+  },
+  props: {
+    user: {
+      type: Object,
+    },
+    loading: {
+      type: Boolean,
+    },
+    code: {
+      type: String,
+    },
   },
   data() {
     return {
@@ -52,26 +76,63 @@ export default {
       site: 1,
       integrate: 1,
       setuppayload: CAMPAIGNPAYLOAD,
-      loading: false,
       BasicInformation,
       SiteDetails,
       IntegrateVyouz,
-      code: "<div> Code snippet from API </div>",
+      audience: AUDIENCEPAYLOAD,
+      cansave: true,
     };
   },
+  watch: {
+    audience() {
+      if (isEmpty(this.audience)) {
+        this.cansave = true;
+      } else {
+        this.cansave = false;
+      }
+    },
+  },
   methods: {
-    nextDetails() {
-      this.basic = 1;
-      this.site = 0;
-      this.$emit("setProgress", 60);
-      this.$emit("setStep", 2);
+    handleInput(e) {
+      let { audience } = e;
+      this.audience = { ...this.audience, ...audience };
     },
-    nextIntegrate() {
-      this.site = 1;
-      this.integrate = 0;
-      this.$emit("setProgress", 90);
-      this.$emit("setStep", 3);
+
+    async nextDetails() {
+      try {
+        await this.$store.dispatch("creator/updateDemographic", this.audience);
+        this.basic = 1;
+        this.site = 0;
+        this.$emit("setProgress", 60);
+        this.$emit("setStep", 2);
+      } catch (error) {
+        console.log(error);
+      }
     },
+    handleSiteDetails(e) {
+      this.audience = { ...this.audience, ...e };
+    },
+
+    async nextIntegrate() {
+      try {
+        await this.$store.dispatch("creator/addSite", this.audience);
+        this.site = 1;
+        this.integrate = 0;
+        this.$emit("setProgress", 90);
+        this.$emit("setStep", 3);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    async verifySite() {
+      try {
+        await this.$store.dispatch("creator/verifySite");
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
     goBack(e) {
       if (e === "Basic Details") {
         this.basic = 1;
