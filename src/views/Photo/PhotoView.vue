@@ -1,16 +1,23 @@
 <template>
-    <div>
-        <PhotoForm />
-    </div>
+  <div>
+    <PhotoForm :loading="loading" />
+  </div>
 </template>
 
 
 
 <script>
-import PhotoForm from "../../components/Photos/PhotoForm.vue"
+import { mapState } from "vuex";
+import PhotoForm from "../../components/Photos/PhotoForm.vue";
 export default {
-    components:{
-        PhotoForm
-    }
-}
+  components: {
+    PhotoForm,
+  },
+
+  computed: {
+    ...mapState("firebase", {
+      loading: (state) => state.loading,
+    }),
+  },
+};
 </script>

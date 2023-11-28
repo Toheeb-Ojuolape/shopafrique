@@ -4,7 +4,6 @@ import { HEADERS } from "@/constants/constants";
 
 export default {
   async createCampaign(data) {
-    console.log(data)
     try {
       const response = await apiClient.post("/campaigns", data, {
         headers: HEADERS,

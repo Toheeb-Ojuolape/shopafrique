@@ -7,9 +7,21 @@
       </template>
     </v-expansion-panel-header>
     <v-expansion-panel-content>
-      <component :code="code" :is="component" :isAddSite="false"/>
-      <ExpansionFooter v-if="type != 'integration'" @saveInfo="saveInfo" @goBack="goBack"/>
-      <TestConnection v-if="type == 'integration'" />
+      <component
+        :code="code"
+        :is="component"
+        :isAddSite="false"
+        :user="user"
+        @handleInput="handleInput"
+      />
+      <ExpansionFooter
+        v-if="type != 'integration'"
+        @saveInfo="saveInfo"
+        @goBack="goBack"
+        :cansave="cansave"
+        :loading="loading"
+      />
+      <TestConnection :loading="loading" v-if="type == 'integration'" @saveInfo="saveInfo" />
     </v-expansion-panel-content>
   </v-expansion-panel>
 </template>
@@ -24,7 +36,7 @@ export default {
   components: {
     Icon,
     ExpansionFooter,
-    TestConnection
+    TestConnection,
   },
   props: {
     title: {
@@ -39,6 +51,15 @@ export default {
     type: {
       type: String,
     },
+    user: {
+      type: Object,
+    },
+    cansave: {
+      type: Boolean,
+    },
+    loading: {
+      type: Boolean,
+    },
   },
 
   methods: {
@@ -48,9 +69,9 @@ export default {
     saveInfo() {
       this.$emit("saveInfo");
     },
-    goBack(){
-      this.$emit("goBack",this.title)
-    }
+    goBack() {
+      this.$emit("goBack", this.title);
+    },
   },
 };
 </script>

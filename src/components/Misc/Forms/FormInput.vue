@@ -15,6 +15,7 @@
       @click:append="show = !show"
       :placeholder="placeholder"
       :readonly="readonly"
+      :inputmode="inputmode"
     />
   </div>
 </template>
@@ -40,9 +41,12 @@ export default Vue.extend({
     placeholder: {
       type: String,
     },
-    readonly:{
-      type:Boolean
-    }
+    readonly: {
+      type: Boolean,
+    },
+    inputmode: {
+      type: String,
+    },
   },
 
   data() {

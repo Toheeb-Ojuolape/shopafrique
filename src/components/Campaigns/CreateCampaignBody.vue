@@ -106,7 +106,6 @@ export default {
     },
     selectImage(e) {
       this.campaign = { ...this.campaign, media: e };
-      console.log(this.campaign);
     },
     selectObjective(e) {
       this.objective = e;
@@ -114,12 +113,11 @@ export default {
     },
     handleInput(e) {
       this.campaign = { ...this.campaign, ...e };
-      console.log(this.campaign);
     },
 
     async createCampaign() {
       try {
-        await this.$store.dispatch("campaigns/createCampaign", this.campaign);
+        await this.$store.dispatch("campaign/createCampaign", this.campaign);
         this.loading = false;
         this.step++;
       } catch (error) {

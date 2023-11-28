@@ -1,7 +1,14 @@
 <template>
   <DashboardLayout>
     <HelloUser :user="user" />
-    <DashboardBody :user="user" :usdValue="usdValue" :isUsd="isUsd" />
+    <DashboardBody
+      :user="user"
+      :usdValue="usdValue"
+      :isUsd="isUsd"
+      :loading="loading"
+      :code="code"
+      :sites="sites"
+    />
   </DashboardLayout>
 </template>
 
@@ -23,6 +30,11 @@ export default Vue.extend({
       usdValue: (state) => state.usdValue,
       isUsd: (state) => state.loading,
     }),
+    ...mapState("creator", {
+      loading: (state) => state.loading,
+      code: (state) => state.code,
+      sites: (state) => state.sites,
+    }),
   },
   watch: {
     user() {
@@ -33,6 +45,7 @@ export default Vue.extend({
   },
   created() {
     this.$store.dispatch("fetchUser");
+    this.$store.dispatch("creator/fetchSites");
   },
 });
 </script>

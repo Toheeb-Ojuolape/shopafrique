@@ -5,7 +5,9 @@ import userService from "@/services/User/userService";
 // import { USERDATA } from "@/constants/constants";
 import ln from "./ln";
 import wallet from "./wallet";
-import campaigns from "./campaigns";
+import campaign from "./campaign";
+import creator from "./creator";
+import firebase from "./firebase";
 
 Vue.use(Vuex);
 Vue.use(VueCookies);
@@ -14,37 +16,13 @@ export default new Vuex.Store({
   modules: {
     ln,
     wallet,
-    campaigns
+    campaign,
+    creator,
+    firebase
   },
   state: {
     user: null,
     loading: false,
-    campaigns: [
-      {
-        title: "New Campaign",
-        status: "Active",
-        date: "02-11-2022 10:00pm",
-        budget: 3000,
-        clicks: 1200,
-        impressions: 1000,
-      },
-      {
-        title: "New Campaign",
-        status: "Active",
-        date: "02-11-2022 10:00pm",
-        budget: 3000,
-        clicks: 1200,
-        impressions: 1000,
-      },
-      {
-        title: "New Campaign",
-        status: "Active",
-        date: "02-11-2022 10:00pm",
-        budget: 3000,
-        clicks: 1200,
-        impressions: 1000,
-      },
-    ]
   },
   getters: {},
   mutations: {

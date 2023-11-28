@@ -4,12 +4,12 @@
     <SitesCards :user="user" :isUsd="isUsd" :usdValue="usdValue" />
     <TableComponent
       :title="'All Sites'"
-      :data="campaigns"
+      :data="sites"
       :heading="heading"
       :buttonTitle="'See all sites'"
       @handleClick="handleClick"
-      :type="'campaign'"
-      :loading="isCampaigns"
+      :type="'sites'"
+      :loading="isSites"
       :emptytitle="'No site to show'"
       :emptybutton="'Add site'"
       :emptydescription="'Add a new site to start earning'"
@@ -33,10 +33,7 @@ import AddSite from "../Modals/AddSite/AddSite.vue";
 export default {
   name: "CampaignBody",
   props: {
-    isCampaigns: {
-      type: Boolean,
-    },
-    campaigns: {
+    sites: {
       type: Array,
     },
     user: {
@@ -46,6 +43,9 @@ export default {
       type: [Number, String],
     },
     isUsd: {
+      type: Boolean,
+    },
+    isSites: {
       type: Boolean,
     },
   },
@@ -61,8 +61,8 @@ export default {
         "Site Url",
         "Status",
         "Date created",
-        "Approval Status",
-        "Clicks",
+        "Channel",
+        "Niche",
         "",
         "",
       ],

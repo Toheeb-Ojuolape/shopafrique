@@ -26,7 +26,7 @@
             <td>
               <v-checkbox v-model="checkbox" />
             </td>
-            <td>{{ type === "campaign" ? row.Title : row.ID }}</td>
+            <td>{{ getTitle(row) }}</td>
             <td>
               <v-chip label :class="row.Status"
                 ><li>{{ row.Status }}</li></v-chip
@@ -34,12 +34,10 @@
             </td>
             <td>{{ row.CreatedAt | dateFormatter }}</td>
             <td>
-              {{
-                type === "campaign" ? row.Budget : row.Amount | amountFormatter
-              }}
+              {{ getAmount(row) }}
             </td>
             <td>
-              {{ type === "campaign" ? row.Clicks : row.Type }}
+              {{ getClick(row) }}
             </td>
             <td>
               {{ type === "campaign" ? row.Impressions : row.PaymentMethod }}
@@ -52,9 +50,9 @@
 
     <div v-if="loading">
       <LoadingTable
-        :title="'Transactions'"
+        :title="title"
         :data="data"
-        :buttonTitle="'See all transactions'"
+        :buttonTitle="'See all ' + title"
         @handleClick="handleClick"
         :view="'page'"
         :loading="loading"
@@ -141,6 +139,32 @@ export default {
     handleClick() {
       this.$emit("handleClick");
     },
+    getTitle(row) {
+      if (this.type === "campaign") {
+        return row.Title;
+      } else if (this.type === "sites") {
+        return row.Website;
+      }
+    },
+    getAmount(row) {
+      if (this.type === "campaign") {
+        return amountFormatter(row.Budget);
+      } else if (this.type === "sites") {
+        return row.Channel;
+      } else {
+        return amountFormatter(row.Amount);
+      }
+    },
+
+    getClick(row){
+      if(this.type==='campaign'){
+        return row.Clicks
+      } else if(this.type==='sites'){
+        return row.Niche
+      } else {
+        return row.Type
+      }
+    }
   },
 };
 </script>
