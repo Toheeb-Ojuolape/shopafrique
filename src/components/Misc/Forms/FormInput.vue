@@ -2,7 +2,7 @@
   <div>
     <label>{{ label }}</label>
     <v-text-field
-      style="height: 56px"
+      :style="`height: ${height ? height : '56px'}`"
       dense
       outlined
       single-line
@@ -16,6 +16,7 @@
       :placeholder="placeholder"
       :readonly="readonly"
       :inputmode="inputmode"
+      :hint="hint"
     />
   </div>
 </template>
@@ -47,6 +48,12 @@ export default Vue.extend({
     inputmode: {
       type: String,
     },
+    hint: {
+      type: String,
+    },
+    height:{
+      type:String
+    }
   },
 
   data() {

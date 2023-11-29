@@ -17,6 +17,7 @@
             :label="'What\'\s your email?'"
           />
 
+
           <FormInput
             :label="'How much would you like to sell this image(s)?'"
             :placeholder="'Enter the amount in SATs'"
@@ -31,13 +32,22 @@
             :placeholder="'Where would you like to receive payment?'"
             @handleInput="handleInput"
             :name="'lightningAddress'"
+            :hint="'e.g toheeb56@bitnob.io'"
+            :height="'63px'"
           />
 
           <FormInput
-            :label="'Who is the person/people in your picture(s)'"
+            :label="'Who is the person/people in your picture?'"
             :placeholder="'Separate by comma e.g Jack Dorsey, Elon Musk'"
             @handleInput="handleInput"
             :name="'features'"
+          />
+
+          <label>Enter Photo description</label>
+          <v-textarea
+            placeholder="e.g Jack Dorsey and Jay Z standing at the conference entrance"
+            outlined
+            v-model="description"
           />
           <ImageUpload @setImage="setImage" />
         </v-form>
@@ -56,8 +66,8 @@
 
       <v-window-item :value="2">
         <SuccessComponent
-          :title="'Photo(s) uploaded successfully'"
-          :description="'You have successfully uploaded a photo to Vyouz'"
+          :title="'Picture uploaded successfully'"
+          :description="'You have successfully uploaded a picture to Vyouz'"
         />
       </v-window-item>
     </v-window>
@@ -93,15 +103,23 @@ export default {
       imageUrl: "",
       payload: IMAGEPAYLOAD,
       disabled: false,
+      description: "",
     };
+  },
+  watch: {
+    description: function () {
+      this.handleInput({ description: this.description });
+    },
   },
   methods: {
     setImage(file) {
-      console.log(file);
       this.file = file.target.files[0];
     },
 
     handleInput(e) {
+      if (e.features) {
+        e.features = e.features.split(",");
+      }
       this.payload = { ...this.payload, ...e };
       if (
         Object.values(this.payload).every((value) => value) &&
@@ -114,10 +132,15 @@ export default {
     },
 
     async handleUpload() {
+      if (parseFloat(this.amount) > 300000) {
+        handleError(
+          "That's too much SATs to charge for a picture, common man! 😅"
+        );
+      }
       try {
         this.payload.image = this.file;
         await this.$store.dispatch("firebase/uploadPost", this.payload);
-        this.step++
+        this.step++;
       } catch (error) {
         handleError(error.message);
       }

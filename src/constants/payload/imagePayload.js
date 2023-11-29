@@ -1,7 +1,8 @@
 export const IMAGEPAYLOAD = {
     name: "",
     email:"",
-    features:"",
+    features:[],
     lightningAddress:"",
-    amount:0
+    amount:0,
+    description:""
   };
