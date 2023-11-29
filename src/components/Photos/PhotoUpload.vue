@@ -132,7 +132,7 @@ export default {
 
     async handleUpload() {
       if (parseFloat(this.payload.amount) < 0) {
-        handleError("You can charge a negative fee lol 😅");
+        handleError("You can't charge a negative fee lol 😅");
         return;
       }
       if (parseFloat(this.payload.amount) > 300000) {
