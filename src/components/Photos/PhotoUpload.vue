@@ -118,7 +118,7 @@ export default {
 
     handleInput(e) {
       if (e.features) {
-        e.features = e.features.split(",");
+        e.features = e.features.toLowerCase().split(",");
       }
       this.payload = { ...this.payload, ...e };
       if (
