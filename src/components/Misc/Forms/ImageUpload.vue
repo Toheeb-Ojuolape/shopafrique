@@ -48,7 +48,6 @@ export default {
 
     handleImage(event) {
       const selectedFile = event.target.files[0];
-      console.log(selectedFile);
       this.name = selectedFile.name;
       if (selectedFile) {
         var reader = new FileReader();

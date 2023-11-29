@@ -17,7 +17,6 @@
             :label="'What\'\s your email?'"
           />
 
-
           <FormInput
             :label="'How much would you like to sell this image(s)?'"
             :placeholder="'Enter the amount in SATs'"
@@ -132,10 +131,15 @@ export default {
     },
 
     async handleUpload() {
-      if (parseFloat(this.amount) > 300000) {
+      if (parseFloat(this.payload.amount) < 0) {
+        handleError("You can charge a negative fee lol 😅");
+        return;
+      }
+      if (parseFloat(this.payload.amount) > 300000) {
         handleError(
-          "That's too much SATs to charge for a picture, common man! 😅"
+          "That's too much SATs to charge for a picture, it's not an NFT you know 😅"
         );
+        return;
       }
       try {
         this.payload.image = this.file;
