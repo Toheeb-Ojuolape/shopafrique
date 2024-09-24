@@ -2,7 +2,7 @@
   <v-card class="photo-upload-form">
     <v-window v-model="step">
       <v-window-item :value="1">
-        <h2>Earn BTC for your pictures</h2>
+        <h2 class="my-3">Earn BTC for your pictures</h2>
         <v-form>
           <FormInput
             @handleInput="handleInput"
@@ -18,7 +18,7 @@
           />
 
           <FormInput
-            :label="'How much would you like to sell this image(s)?'"
+            :label="'How much would you like to sell this image(s) in SATs?'"
             :placeholder="'Enter the amount in SATs'"
             @handleInput="handleInput"
             :name="'amount'"
