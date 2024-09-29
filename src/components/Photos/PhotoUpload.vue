@@ -1,75 +1,112 @@
 <template>
   <v-card class="photo-upload-form">
-    <v-window v-model="step">
-      <v-window-item :value="1">
-        <h2 class="my-3">Earn BTC for your pictures</h2>
-        <v-form>
-          <FormInput
-            @handleInput="handleInput"
-            :name="'name'"
-            :label="'What\'\s your name?'"
-          />
+    <v-stepper flat alt-labels v-model="e1">
+      <v-stepper-header>
+        <v-stepper-step :complete="e1 > 1" step="1">
+          Profile Details
+        </v-stepper-step>
 
-          <FormInput
-            @handleInput="handleInput"
-            :type="'email'"
-            :name="'email'"
-            :label="'What\'\s your email?'"
-          />
+        <v-divider></v-divider>
 
-          <FormInput
-            :label="'How much would you like to sell this image(s) in SATs?'"
-            :placeholder="'Enter the amount in SATs'"
-            @handleInput="handleInput"
-            :name="'amount'"
-            :type="'number'"
-            :inputmode="'numberic'"
-          />
+        <v-stepper-step :complete="e1 > 2" step="2">
+          Picture Details
+        </v-stepper-step>
 
-          <FormInput
-            :label="'What\'\s your Lightning address?'"
-            :placeholder="'Where would you like to receive payment?'"
-            @handleInput="handleInput"
-            :name="'lightningAddress'"
-            :hint="'e.g toheeb56@bitnob.io'"
-            :height="'63px'"
-          />
+        <v-divider></v-divider>
 
-          <FormInput
-            :label="'Who is the person/people in your picture?'"
-            :placeholder="'Separate by comma e.g Jack Dorsey, Elon Musk'"
-            @handleInput="handleInput"
-            :name="'features'"
-          />
+        <v-stepper-step step="3"> Complete </v-stepper-step>
+      </v-stepper-header>
 
-          <label>Enter Photo description</label>
-          <v-textarea
-            placeholder="e.g Jack Dorsey and Jay Z standing at the conference entrance"
-            outlined
-            v-model="description"
-          />
-          <ImageUpload @setImage="setImage" />
-        </v-form>
+      <v-stepper-items class="mx-3">
+        <v-stepper-content step="1">
+          <v-form>
+            <FormInput
+              @handleInput="handleInput"
+              :name="'name'"
+              :label="'What\'\s your name?'"
+            />
 
-        <div class="my-3">
-          <PrimaryButton
-            :disabled="file && !disabled ? false : true"
-            :block="true"
-            :large="true"
-            @handleClick="handleUpload"
-            :loading="loading"
-            >Upload</PrimaryButton
+            <FormInput
+              @handleInput="handleInput"
+              :type="'email'"
+              :name="'email'"
+              :label="'What\'\s your email?'"
+            />
+
+            <FormInput
+              :label="'What\'\s your Lightning address?'"
+              :placeholder="'Where would you like to receive payment?'"
+              @handleInput="handleInput"
+              :name="'lightningAddress'"
+              :hint="'e.g toheeb56@bitnob.io'"
+              :height="'63px'"
+            />
+          </v-form>
+
+          <v-btn
+            block
+            class="rounded-lg my-6"
+            x-large
+            color="primary"
+            @click="e1 = 2"
+            :disabled="
+              !payload.name || !payload.email || !payload.lightningAddress
+            "
           >
-        </div>
-      </v-window-item>
+            Continue
+          </v-btn>
+        </v-stepper-content>
 
-      <v-window-item :value="2">
-        <SuccessComponent
-          :title="'Picture uploaded successfully'"
-          :description="'You have successfully uploaded a picture to Vyouz'"
-        />
-      </v-window-item>
-    </v-window>
+        <v-stepper-content step="2">
+          <v-btn class="mb-3" small fab depressed @click="e1 = 1"
+            ><v-icon>mdi-arrow-left</v-icon></v-btn
+          >
+          <v-form>
+            <FormInput
+              :label="'How much would you like to sell this image(s) in SATs?'"
+              :placeholder="'Enter the amount in SATs'"
+              @handleInput="handleInput"
+              :name="'amount'"
+              :type="'number'"
+              :inputmode="'numberic'"
+            />
+
+            <FormInput
+              :label="'Who is the person/people in your picture?'"
+              :placeholder="'Separate by comma e.g Jack Dorsey, Elon Musk'"
+              @handleInput="handleInput"
+              :name="'features'"
+            />
+
+            <label>Enter Photo description</label>
+            <v-textarea
+              placeholder="e.g Jack Dorsey and Jay Z standing at the conference entrance"
+              outlined
+              v-model="description"
+            />
+            <ImageUpload @setImage="setImage" />
+          </v-form>
+
+          <div class="my-3">
+            <PrimaryButton
+              :disabled="file && !disabled ? false : true"
+              :block="true"
+              :large="true"
+              @handleClick="handleUpload"
+              :loading="loading"
+              >Upload</PrimaryButton
+            >
+          </div>
+        </v-stepper-content>
+
+        <v-stepper-content step="3">
+          <SuccessComponent
+            :title="'Picture uploaded successfully'"
+            :description="'You have successfully uploaded a picture to Vyouz'"
+          />
+        </v-stepper-content>
+      </v-stepper-items>
+    </v-stepper>
   </v-card>
 </template>
 
@@ -98,7 +135,7 @@ export default {
   data() {
     return {
       file: "",
-      step: 1,
+      e1: 1,
       imageUrl: "",
       payload: IMAGEPAYLOAD,
       disabled: false,
@@ -144,7 +181,7 @@ export default {
       try {
         this.payload.image = this.file;
         await this.$store.dispatch("firebase/uploadPost", this.payload);
-        this.step++;
+        this.e1 = 3;
       } catch (error) {
         handleError(error.message);
       }
