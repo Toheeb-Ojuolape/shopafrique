@@ -1,18 +1,19 @@
 .photoform-container {
-
   background-image: url("../src/assets/signup-image.jpg");
   justify-content: center;
   display: flex;
   width: 100%;
   background-size: cover;
   padding: 40px 0px;
+  height: 100vh
 }
 
 @media only screen and (max-width: 600px) {
   .photo-upload-form {
-    width: 400px !important;
+    max-width: 600px !important;
+    min-width: 350px;
     border-radius: 10px !important;
-    padding: 30px 15px;
+    padding: 30px 0px;
   }
 }
 
@@ -21,8 +22,7 @@
     width: 600px !important;
     border-radius: 10px !important;
     padding: 30px 0px;
-    height: auto
-
+    height: 500px
   }
 }
 
